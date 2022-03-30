@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:59:33 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/30 22:31:53 by faventur         ###   ########.fr       */
+/*   Updated: 2022/03/30 22:59:56 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int	rgb_to_hex_converter(t_color rgb)
 {
+	printf("rgb2: %d\n", (rgb.a << 24 | rgb.r << 16 | rgb.g << 8 | rgb.b));
 	return (rgb.a << 24 | rgb.r << 16 | rgb.g << 8 | rgb.b);
 }
 
@@ -37,6 +38,7 @@ t_color	hex_to_rgb_converter(int hex_value)
 	rgb.g = ((hex_value >> 8) & 0xff);
 	rgb.b = ((hex_value) & 0xff);
 	printf("basic colors: %d, %d, %d, %d\n", rgb.r, rgb.g, rgb.b, rgb.a);
+	printf("rgb1: %d\n", hex_value);
 	return (rgb);
 }
 
@@ -47,10 +49,7 @@ int	add_shade(double distance, int color)
 
 	rgb = hex_to_rgb_converter(color);
 	printf("%d, %d, %d, %d\n", rgb.r, rgb.g, rgb.b, rgb.a);
-	black.r = 0;
-	black.g = 0;
-	black.b = 0;
-	black.a = 255;
+	black = hex_to_rgb_converter(0xff000000);
 	if (distance >= 0 && distance <= 1)
 	{
 		rgb = lerp(rgb, black, distance);
@@ -69,10 +68,7 @@ int	get_opposite(int color)
 	t_color	complem;
 
 	rgb = hex_to_rgb_converter(color);
-	white.r = 255;
-	white.g = 255;
-	white.b = 255;
-	white.a = 255;
+	white = hex_to_rgb_converter(0xffffffff);
 	complem.r = white.r - rgb.r;
 	complem.g = white.g - rgb.g;
 	complem.b = white.b - rgb.b;
@@ -83,10 +79,10 @@ int	get_opposite(int color)
 	return (color);
 }
 
-int main()
+int	main(void)
 {
-	printf("%d\n", get_opposite(0xffff0000));
-	printf("%d\n", get_opposite(0xff00ff00));
+	printf("%d\n", add_shade(0.5, 0xffff0000));
+	printf("%d\n", add_shade(0.2, 0xffff0000));
 	printf("%d\n", get_opposite(0xff0000ff));
 	printf("%d\n", get_opposite(0xffffffff));
 }
