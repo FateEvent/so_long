@@ -1,7 +1,8 @@
 For more information on the MiniLibX library, see:
 * <https://harm-smits.github.io/42docs/libs/minilibx>;
 * <https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx>;
-* <https://github.com/S-LucasSerrano/miniLibX_sample>.
+* <https://github.com/S-LucasSerrano/miniLibX_sample>;
+* <https://tronche.com/gui/x/xlib>.
 
 To  use  MiniLibX  functions,  you  may  need  to  link  your  software with several libraries, including the MiniLibX library itself. On MacOs, you will need to type the following line:
 
