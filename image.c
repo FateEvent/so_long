@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/02 13:33:35 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/02 17:01:42 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,6 @@
 */
 
 #include "so_long.h"
-
-t_image	ft_new_image(void *mlx, int width, int height)
-{
-	t_image	img;
-
-	img.reference = mlx_new_image(mlx, width, height);
-	img.size.x = width;
-	img.size.x = height;
-	img.pixels = mlx_get_data_addr(img.reference, &img.bits_per_pixel,
-			&img.line_size, &img.endian);
-	return (img);
-}
-
-t_image	ft_new_sprite(void *mlx, char *path)
-{
-	t_image	img;
-
-	img.reference = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
-	img.pixels = mlx_get_data_addr(img.reference, &img.bits_per_pixel,
-			&img.line_size, &img.endian);
-	return (img);
-}
 
 t_image	ft_put_background(t_program data, char *path)
 {
@@ -67,4 +45,26 @@ t_image	ft_put_background(t_program data, char *path)
 		i++;
 	}
 	return (bg);
+}
+
+t_image	ft_new_image(void *mlx, int width, int height)
+{
+	t_image	img;
+
+	img.reference = mlx_new_image(mlx, width, height);
+	img.size.x = width;
+	img.size.x = height;
+	img.pixels = mlx_get_data_addr(img.reference, &img.bits_per_pixel,
+			&img.line_size, &img.endian);
+	return (img);
+}
+
+t_image	ft_new_sprite(void *mlx, char *path)
+{
+	t_image	img;
+
+	img.reference = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
+	img.pixels = mlx_get_data_addr(img.reference, &img.bits_per_pixel,
+			&img.line_size, &img.endian);
+	return (img);
 }
