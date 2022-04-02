@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 13:55:07 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/01 18:04:48 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/02 13:11:41 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	ft_put_background(t_image image, t_vars vars)
 	{	
 		while (j * image.size.x < 1920)
 		{		
-			mlx_put_image_to_window(vars.mlx, vars.win, image.ref, j * (image.size.x - 1), i * (image.size.y - 1));
+			mlx_put_image_to_window(vars.mlx, vars.win, image.ref,
+				j * (image.size.x - 1), i * (image.size.y - 1));
 			j++;
 		}
 		j = 0;
