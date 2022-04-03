@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 11:54:00 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/02 12:04:11 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/03 19:21:12 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 ** 255.
 ** 
 ** The turn_pixel_to_color() function turns the four first chars of the
-** <pixel> string into the <color> structure. Pixels are defined as
-** follows: the first char is blue, the second one is green, the third one
-** is and the fourth one represents the alpha or transparency. This order
-** depends on the system, and it is defined by the endian.
+** <pixel> string into the <color> structure. Pixels are defined as follows:
+** the first char is blue, the second one is green, the third one is red and
+** the fourth one represents the alpha or transparency. This order depends
+** on the system, and it is defined by the endian.
 ** 
-** the turn_img_to_color() function turns all the pixels of  the <image>
+** The turn_img_to_color() function turns all the pixels of  the <image>
 ** structure into the <color> structure. The loops repeat for each pixel
 ** of the image as it was a 2D table, and it is applied the formula to
 ** separate the colors into the struct.

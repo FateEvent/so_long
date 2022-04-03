@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:13:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/02 19:39:07 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/03 19:18:52 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	program.mlx = mlx_init();
 	program.window = ft_new_window(program.mlx, 1980, 1080, "Hello world!");
 	ft_put_background(program, "images/chessboard.xpm");
-	program.sprite = ft_new_sprite(program.mlx, "images/befana_giant.xpm");
+	program.sprite = ft_new_sprite(program.mlx, "images/befana.xpm");
 	program.sprite_position.x = 0;
 	program.sprite_position.y = 0;
 	mlx_put_image_to_window(program.mlx, program.window.reference,

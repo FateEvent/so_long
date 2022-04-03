@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/03 16:02:20 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/03 20:36:35 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@
 
 // ----------------------------------
 // STRUCTS
+
+typedef struct s_prop {
+	int	wall;
+	int	item;
+	int	exit;
+	int	start_pos;
+}				t_prop;
 
 /* vector with an x and y */
 typedef struct s_vector
@@ -70,7 +77,7 @@ typedef struct s_program {
 // ---------------------------------
 // FUNCTIONS
 
-t_window	ft_new_window(void *mlx, int widht, int height, char *name);
+t_window	ft_new_window(void *mlx, int width, int height, char *name);
 t_image		ft_new_sprite(void *mlx, char *path);
 void		ft_put_background(t_program data, char *path);
 void		ft_put_sprite(t_program data, char **map);
