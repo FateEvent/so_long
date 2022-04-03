@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/02 13:33:11 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/03 12:12:26 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include <mlx.h>
+# include <stdlib.h>
 
 // ----------------------------------
 // MACROS
@@ -68,7 +69,8 @@ typedef struct s_program {
 
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
 t_image		ft_new_sprite(void *mlx, char *path);
-t_image		ft_put_background(t_program data, char *path);
+void		ft_put_background(t_program data, char *path);
+void		ft_put_sprite(t_program data, char **map);
 
 t_color		new_color(int r, int g, int b, int a);
 void		turn_img_to_color(t_image *image, t_color color);
