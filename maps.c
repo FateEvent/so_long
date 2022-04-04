@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:25:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/04 11:17:38 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/04 14:46:51 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,23 @@ static int	ft_wall_parser(char **map)
 	int		i;
 	int		j;
 	int		line;
-	t_prop	obj;
 
 	line = ft_strlen(map[0]) - 1;
-	i = 1;
-	j = 0;
-	while (map[0][j++])
+	i = 0;
+	j = -1;
+	while (map[0][++j])
 	{
 		if (map[0][j] != '1')
 			return (0);
 	}
-	while (map[i++])
+	while (map[++i])
 	{
 		if (map[i][0] != '1' || map[i][line] != '1')
 			return (0);
 	}
-	j = 0;
-	while (map[i][j++])
+	j = -1;
+	i--;
+	while (map[i][++j])
 	{
 		if (map[i][j] != '1')
 			return (0);
@@ -69,6 +69,8 @@ static int	ft_prop_counter(char **map)
 	t_prop	obj;
 
 	i = 0;
+	j = 0;
+	prop_init(&obj);
 	while (map[i])
 	{
 		while (map[i][j])
@@ -117,17 +119,17 @@ char	**ft_map_reader(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	i = 0;
-	if (fd == -1)
+	buffer = malloc(sizeof(char) * 1);
+	if (!buffer || fd == -1)
 		return (NULL);
-	buffer = NULL;
-	temp = malloc(sizeof(char) * 1);
-	if (!temp)
-		return (NULL);
-	temp[0] = '\0';
-	while (get_next_line(fd))
+	buffer[0] = '\0';
+	temp = buffer;
+	while (1)
 	{
 		temp = get_next_line(fd);
-		buffer = ft_strjoin(temp, buffer);
+		if (temp == NULL)
+			break ;
+		buffer = ft_strjoin(buffer, temp);
 		free(temp);
 	}
 	arr = ft_split(buffer, '\n');

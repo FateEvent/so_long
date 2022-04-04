@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/04 11:04:09 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/04 14:45:11 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 // STRUCTS
 
 typedef struct s_prop {
-	int	wall;
 	int	item;
 	int	exit;
 	int	start_pos;

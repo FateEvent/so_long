@@ -1,5 +1,5 @@
 NAME = sample.out
-SRC = main.c window.c image.c color.c hooks.c maps.c
+SRC = main.c window.c image.c color.c hooks.c maps.c utils.c
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
