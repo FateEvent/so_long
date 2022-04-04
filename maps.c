@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:25:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/04 11:04:56 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/04 11:17:38 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,22 @@ static int	ft_wall_parser(char **map)
 
 	line = ft_strlen(map[0]) - 1;
 	i = 1;
-	while (map[0][j])
-	{
-		if (map[0][j] != '1')
-			return (0);
-	}
 	j = 0;
-	while (map[0][j])
+	while (map[0][j++])
 	{
 		if (map[0][j] != '1')
 			return (0);
 	}
-	while (map[i])
+	while (map[i++])
 	{
 		if (map[i][0] != '1' || map[i][line] != '1')
 			return (0);
-		i++;
+	}
+	j = 0;
+	while (map[i][j++])
+	{
+		if (map[i][j] != '1')
+			return (0);
 	}
 	return (1);
 }
