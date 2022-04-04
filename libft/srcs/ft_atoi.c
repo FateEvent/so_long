@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:54:51 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/01 10:06:00 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:09:09 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@
 */
 
 #include "libft.h"
-
-static int	ft_isspace(int c)
-{
-	if (c == ' ' || c == '\n' || c == '\t'
-		|| c == '\r' || c == '\v' || c == '\f')
-		return (8);
-	else
-		return (0);
-}
 
 int	ft_atoi(const char *nptr)
 {

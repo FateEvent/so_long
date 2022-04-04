@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 14:42:42 by faventur          #+#    #+#             */
-/*   Updated: 2022/03/12 15:28:29 by faventur         ###   ########.fr       */
+/*   Created: 2022/02/02 11:23:13 by faventur          #+#    #+#             */
+/*   Updated: 2022/02/28 10:52:18 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+/*
+** The ft_strnew() function allocates (with malloc(3)) and returns a
+** "fresh" null-terminated string. Every character of the string is
+** set to '\0'. If the allocation fails, it returns NULL.
+*/
 
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
+char	*ft_strnew(size_t size)
+{
+	char	*room;
 
-char	*ft_strchr(const char *str, int c);
-char	*ft_strjoin(const char *s1, const char *s2);
-size_t	ft_strlen(const char *str);
-char	*get_next_line(int fd);
-
-#endif
+	room = (char *)malloc(sizeof(char) * (size + 1));
+	if (!room)
+		return (NULL);
+	ft_bzero(room, size + 1);
+	return (room);
+}

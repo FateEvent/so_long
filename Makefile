@@ -1,9 +1,14 @@
-NAME = sample.out
-SRC = main.c window.c image.c color.c hooks.c maps.c utils.c
-OBJ = $(SRC:.c=.o)
+SRCS = main.c window.c image.c color.c hooks.c maps.c utils.c
+
+OBJS = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
+
 LINKS = -lmlx -framework OpenGL -framework AppKit
+
+RM =	rm -f
+
+NAME = so_long
 
 NONE='\033[0m'
 GREEN='\033[32m'
@@ -12,28 +17,25 @@ CURSIVE='\033[3m'
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-	@gcc $(FLAGS) $(OBJ) $(LINKS) -o $(NAME)
-	@echo $(GREEN)"- Compiled -"$(NONE)
-	@rm $(OBJ)
-	@echo $(CURSIVE)$(GRAY) "     Deleted object files" $(NONE)
+$(NAME): $(OBJS)
+	@$(MAKE) -C ./libft
+	@mv ./libft/libft.a .
+	@gcc $(FLAGS) $(OBJS) $(LINKS) libft.a -o $(NAME)
+	@echo '\033[1;35mMission accomplished!';
+	@rm $(OBJS)
 
-$(OBJ): $(SRC)
-	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
-	@gcc $(FLAGS) -c $(SRC)
+$(OBJS): $(SRCS)
+	@gcc $(FLAGS) -c $(SRCS)
 
 exe: all
-	@echo "     - Executing $(NAME)... \n"
 	@./$(NAME)
-	@echo "\n     - Done -"
 
 clean:
-	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
-	@rm -rf $(OBJ)
+	@$(RM) $(OBJS) libft.a
+	@$(MAKE) clean -C ./libft
 
 fclean: clean
-	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
-	@rm -rf $(NAME)
+	@$(RM) $(NAME)
+	@$(MAKE) fclean -C ./libft
 
 re: fclean all

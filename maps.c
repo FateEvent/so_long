@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:25:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/04 14:46:51 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:32:23 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ static int	ft_prop_counter(char **map)
 
 int	ft_map_parser(char **map)
 {
-	int	i;
-	int	line;
+	int		i;
+	size_t	line;
 
 	line = ft_strlen(map[0]);
 	i = 1;
