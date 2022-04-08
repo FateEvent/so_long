@@ -6,12 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/02 19:26:35 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:16:57 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int	ft_input(int key, void *param)
 {
@@ -37,7 +36,7 @@ int	ft_input(int key, void *param)
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite.reference, program->sprite_position.x,
 		program->sprite_position.y);
-	printf("Key pressed -> %d\n", key);
+	ft_printf("Key pressed -> %d\n", key);
 	return (0);
 }
 
