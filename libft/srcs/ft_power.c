@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:06:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/08 22:01:02 by faventur         ###   ########.fr       */
+/*   Created: 2022/04/15 11:47:11 by faventur          #+#    #+#             */
+/*   Updated: 2022/04/15 11:55:15 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** The ft_lstdelone() function frees the memory of the element passed
-** as a parameter with the del function and free(3). The memory of
-** next must be freed.
+** The ft_power() function calculates the power of a number.
 */
-
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int	ft_power(int n, int power)
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	int	result;
+
+	if (power < 0 || !n)
+		return (0);
+	result = 1;
+	while (power--)
+		result *= n;
+	return (result);
 }

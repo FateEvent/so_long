@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   mt_binary_to_char.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:06:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/08 22:01:02 by faventur         ###   ########.fr       */
+/*   Created: 2022/04/15 11:47:32 by faventur          #+#    #+#             */
+/*   Updated: 2022/04/15 11:53:31 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** The ft_lstdelone() function frees the memory of the element passed
-** as a parameter with the del function and free(3). The memory of
-** next must be freed.
+** The mt_binary2char() function transforms a binary into a character.
 */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+char	mt_binary2char(char *binary)
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	char	c;
+	int		i;
+	int		y;
+
+	if (!binary)
+		return (0);
+	i = 7;
+	y = 0;
+	c = 0;
+	while (i >= 0)
+	{
+		if (binary[i] == '1')
+			c += ft_power(2, y);
+		i--;
+		y++;
+	}
+	return (c);
 }

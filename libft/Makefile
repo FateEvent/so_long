@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/10 17:55:49 by faventur          #+#    #+#              #
-#    Updated: 2022/04/10 17:58:22 by faventur         ###   ########.fr        #
+#    Updated: 2022/04/15 12:00:15 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ SRCS	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 	ft_strjoin.c ft_strtrim.c ft_spacetrim.c ft_split.c ft_itoa.c \
 	ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_putchar.c \
 	ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c \
-	ft_putendl_fd.c ft_putnbr_fd.c ft_putnbr_base.c get_next_line.c \
-	ft_printf.c ft_printf_utils.c ft_printf_basic.c
+	ft_putendl_fd.c ft_putnbr_fd.c ft_putnbr_base.c mt_binary2char.c \
+	ft_power.c ft_strtolol.c get_next_line.c ft_printf.c \
+	ft_printf_basic.c ft_printf_utils.c
 
 SRCSB	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \

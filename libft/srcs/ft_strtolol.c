@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_strtolol.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:06:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/08 22:01:02 by faventur         ###   ########.fr       */
+/*   Created: 2022/04/15 12:00:43 by faventur          #+#    #+#             */
+/*   Updated: 2022/04/15 12:01:48 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_lstdelone() function frees the memory of the element passed
-** as a parameter with the del function and free(3). The memory of
-** next must be freed.
-*/
-
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int	ft_strtolol(const char *str)
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	int			i;
+	long long	rt;
+	int			pm;
+
+	rt = 0;
+	i = 0;
+	pm = 1;
+	if (str[i] && (str[i] == '-' || str[i] == '+'))
+	{
+		if (str[i] == '-')
+			pm *= -1;
+		i++;
+	}
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		rt = rt * 10 + (str[i] - 48);
+		if (rt * pm > 2147483647)
+			return (0);
+		else if (rt * pm < -2147483648)
+			return (0);
+		i++;
+	}
+	return (1);
 }
