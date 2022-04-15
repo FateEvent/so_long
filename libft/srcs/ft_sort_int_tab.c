@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mt_binary_to_char.c                                :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 11:47:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/15 11:53:31 by faventur         ###   ########.fr       */
+/*   Created: 2022/04/15 15:12:45 by faventur          #+#    #+#             */
+/*   Updated: 2022/04/15 15:13:46 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** The mt_binary2char() function transforms a binary into a character.
+** The ft_sort_int_tab() function sorts in ascending order an array
+** of integers.
 */
 
 #include "libft.h"
 
-char	mt_binary2char(char *binary)
+void	ft_sort_int_tab(int	*tab, int size)
 {
-	char	c;
-	int		i;
-	int		y;
+	int	i;
+	int	temp;
 
-	if (!binary)
-		return (0);
-	i = 7;
-	y = 0;
-	c = 0;
-	while (i >= 0)
+	i = 0;
+	temp = 0;
+	while (i < size - 1)
 	{
-		if (binary[i] == '1')
-			c += ft_power(2, y);
-		i--;
-		y++;
+		if (tab[i] > tab[i + 1])
+		{
+			temp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = temp;
+			i = 0;
+		}
+		else
+			i++;
 	}
-	return (c);
 }

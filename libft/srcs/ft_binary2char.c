@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtolol.c                                      :+:      :+:    :+:   */
+/*   ft_binary2char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 12:00:43 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/15 16:57:25 by faventur         ###   ########.fr       */
+/*   Created: 2022/04/15 11:47:32 by faventur          #+#    #+#             */
+/*   Updated: 2022/04/15 16:54:41 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** The mt_binary2char() function transforms a binary into a character.
+*/
+
 #include "libft.h"
 
-int	ft_strtolol(const char *str)
+char	mt_binary2char(char *binary)
 {
-	int			i;
-	long long	rt;
-	int			pm;
+	char	c;
+	int		i;
+	int		y;
 
-	rt = 0;
-	i = 0;
-	pm = 1;
-	if (str[i] && (str[i] == '-' || str[i] == '+'))
+	if (!binary)
+		return (0);
+	i = 7;
+	y = 0;
+	c = 0;
+	while (i >= 0)
 	{
-		if (str[i] == '-')
-			pm *= -1;
-		i++;
+		if (binary[i] == '1')
+			c += ft_power(2, y);
+		i--;
+		y++;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		rt = rt * 10 + (str[i] - 48);
-		if (rt * pm > 2147483647)
-			return (0);
-		else if (rt * pm < -2147483648)
-			return (0);
-		i++;
-	}
-	return (1);
+	return (c);
 }
