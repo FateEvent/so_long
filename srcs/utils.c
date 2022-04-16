@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 14:46:30 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 15:21:25 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 18:14:23 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ t_vector	ft_get_coordinates(char **map, char prop)
 	}
 	coord.x = -1;
 	coord.y = -1;
-	return	(coord);
+	return (coord);
 }
