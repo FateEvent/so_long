@@ -6,11 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 11:44:53 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 13:46:47 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/mlx_utils.h"
 
 int	ft_input(int key, void *param)
 {
@@ -27,12 +27,8 @@ int	ft_input(int key, void *param)
 		program->sprite_position.y += program->sprite.size.y;
 	else if (key == 126)
 		program->sprite_position.y -= program->sprite.size.y;
-	else if (key == 15)
-		turn_img_to_color(&program->sprite, new_color(255, 0, 0, 0));
-	else if (key == 5)
-		turn_img_to_color(&program->sprite, new_color(0, 255, 0, 0));
-	else if (key == 11)
-		turn_img_to_color(&program->sprite, new_color(0, 0, 255, 0));
+	else if (key == 53)
+		exit(0);
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite.reference, program->sprite_position.x,
 		program->sprite_position.y);

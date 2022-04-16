@@ -6,11 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 11:54:00 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 11:44:56 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 13:29:24 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/forms_and_colours.h"
 
 /*
 ** The new_color() function returns a new color, each value going from 0 to

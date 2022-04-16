@@ -6,18 +6,18 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:13:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 11:45:03 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 13:38:34 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/mlx_utils.h"
 
 int	main(void)
 {
 	t_program	program;
 
 	program.mlx = mlx_init();
-	program.window = ft_new_window(program.mlx, 1980, 1080, "Hello world!");
+	program.window = ft_new_window(program.mlx, 1980, 1080, "Befana!");
 	ft_put_background(program, "images/chessboard.xpm");
 	program.sprite = ft_new_sprite(program.mlx, "images/befana.xpm");
 	program.sprite_position.x = 0;
