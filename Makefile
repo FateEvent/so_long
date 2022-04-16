@@ -1,6 +1,6 @@
 SRCS = main.c window.c image.c color.c hooks.c maps.c utils.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS	= $(addprefix srcs/, ${SRCS:.c=.o})
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -25,14 +25,11 @@ $(NAME): $(OBJS)
 	@echo "$(CURSIVE)$(HIGREEN)c'est surfait.$(NONE)"
 	@rm $(OBJS)
 
-$(OBJS): $(SRCS)
-	@gcc $(FLAGS) -c $(SRCS)
-
 exe: all
 	@./$(NAME)
 
 clean:
-	@$(RM) $(OBJS) libft.a
+	@$(RM) libft.a $(OBJS)
 	@$(MAKE) clean -C ./libft
 
 fclean: clean

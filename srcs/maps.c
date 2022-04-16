@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:25:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/04 15:32:23 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 11:45:10 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** of the array passed as a parameter and finally frees the array itself.
 */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	ft_map_freer(char **map)
 {

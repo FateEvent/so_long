@@ -15,5 +15,3 @@ On Unix/Linux, simply add the following arguments at linking time:
 -lmlx -lXext -lX11
 
 You may also need to specify the path to these libraries, using the -L flag.
-
-algorithme pour faire du bruit perlin perlin noise

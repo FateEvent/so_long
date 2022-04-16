@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/03 19:18:01 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 11:44:48 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** the <path> string.
 */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	ft_invoke_pixie(t_program data, char **map, t_image *pixie, int *i)
 {
