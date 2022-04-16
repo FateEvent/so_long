@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:25:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 13:38:43 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 15:22:02 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	ft_prop_counter(char **map)
 
 	i = 0;
 	j = 0;
-	prop_init(&obj);
+	ft_prop_init(&obj);
 	while (map[i])
 	{
 		while (map[i][j])
@@ -124,7 +124,7 @@ char	**ft_map_reader(char *filename)
 		return (NULL);
 	buffer[0] = '\0';
 	temp = buffer;
-	while (1)
+	while (42)
 	{
 		temp = get_next_line(fd);
 		if (temp == NULL)

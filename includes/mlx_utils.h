@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 13:38:12 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/16 15:21:18 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,10 @@ typedef struct s_program {
 
 t_window	ft_new_window(void *mlx, int width, int height, char *name);
 t_image		ft_new_sprite(void *mlx, char *path);
+t_vector	ft_get_coordinates(char **map, char prop);
 void		ft_put_background(t_program data, char *path);
 void		ft_put_sprite(t_program data, char **map);
 void		ft_invoke_pixie(t_program data, char **map, t_image *pixie, int *i);
-
-t_color		new_color(int r, int g, int b, int a);
-void		turn_img_to_color(t_image *image, t_color color);
 
 int			ft_map_parser(char **map);
 char		**ft_map_reader(char *filename);
@@ -93,6 +91,6 @@ void		ft_map_freer(char **map);
 int			ft_input(int key, void *program);
 int			ft_update(void *param);
 
-void		prop_init(t_prop *obj);
+void		ft_prop_init(t_prop *obj);
 
 #endif
