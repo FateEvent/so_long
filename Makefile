@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 11:47:12 by faventur          #+#    #+#              #
-#    Updated: 2022/04/16 13:31:20 by faventur         ###   ########.fr        #
+#    Updated: 2022/04/18 17:29:57 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,9 @@ $(NAME): $(OBJS)
 	@echo "$(CURSIVE)$(HIBLUE)Parce qu'ouvrir une fenêtre,$(NONE)"
 	@echo "$(CURSIVE)$(HIGREEN)c'est surfait.$(NONE)"
 	@rm $(OBJS)
+
+.c.o:
+	gcc -Wall -Wextra -Werror -c -I./includes -I./libft/includes $< -o ${<:.c=.o}
 
 exe: all
 	@./$(NAME)

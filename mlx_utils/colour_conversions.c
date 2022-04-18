@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   colour_conversions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:59:33 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 11:59:18 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:30:32 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/forms_and_colours.h"
+#include "forms_and_colours.h"
 
 int	rgb_to_hex_converter(t_color rgb)
 {

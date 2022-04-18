@@ -6,11 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:13:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 19:24:21 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:29:08 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mlx_utils.h"
+#include "mlx_utils.h"
 
 int	main(void)
 {

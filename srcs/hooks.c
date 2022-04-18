@@ -6,11 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 13:46:47 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:30:04 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mlx_utils.h"
+#include "mlx_utils.h"
 
 int	ft_input(int key, void *param)
 {

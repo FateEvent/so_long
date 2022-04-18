@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 15:21:18 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:30:54 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <sys/types.h>
-# include "../libft/includes/libft.h"
-# include "../libft/includes/ft_printf.h"
-# include "../libft/includes/get_next_line.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 // ----------------------------------
 // MACROS

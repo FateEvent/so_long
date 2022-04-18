@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 13:38:38 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:30:10 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** the <path> string.
 */
 
-#include "../includes/mlx_utils.h"
+#include "mlx_utils.h"
 
 void	ft_invoke_pixie(t_program data, char **map, t_image *pixie, int *i)
 {

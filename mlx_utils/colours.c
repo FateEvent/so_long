@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 11:54:00 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/16 13:29:24 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:30:37 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/forms_and_colours.h"
+#include "forms_and_colours.h"
 
 /*
 ** The new_color() function returns a new color, each value going from 0 to
