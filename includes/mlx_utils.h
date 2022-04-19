@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/18 17:30:54 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:43:22 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ t_window	ft_new_window(void *mlx, int width, int height, char *name);
 t_image		ft_new_sprite(void *mlx, char *path);
 t_vector	ft_get_coordinates(char **map, char prop);
 void		ft_put_background(t_program data, char *path);
-void		ft_put_sprite(t_program data, char **map);
-void		ft_invoke_pixie(t_program data, char **map, t_image *pixie, int *i);
+t_image		*ft_put_sprite(t_program data);
+void		ft_invoke_pixie(char c, int *i, t_program data, t_image *pixie);
+void		ft_display_map(t_program data, char **map, t_image *pixie);
 
 int			ft_map_parser(char **map);
 char		**ft_map_reader(char *filename);

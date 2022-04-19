@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/18 17:30:10 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:47:18 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,52 +20,61 @@
 
 #include "mlx_utils.h"
 
-void	ft_invoke_pixie(t_program data, char **map, t_image *pixie, int *i)
+void	ft_invoke_pixie(char c, int *i, t_program data, t_image *pixie)
 {
-	if (map[i[0]][i[1]] == '1')
+	if (c == '1')
 		mlx_put_image_to_window(data.mlx, data.window.reference,
 			pixie[0].reference, i[1] * (pixie[0].size.x - 1),
 			i[0] * (pixie[0].size.y - 1));
-	else if (map[i[0]][i[1]] == 'C')
+	else if (c == 'C')
 		mlx_put_image_to_window(data.mlx, data.window.reference,
 			pixie[1].reference, i[1] * (pixie[1].size.x - 1),
 			i[0] * (pixie[1].size.y - 1));
-	else if (map[i[0]][i[1]] == 'E')
-		mlx_put_image_to_window(data.mlx, data.window.reference,
-			pixie[2].reference, i[1] * (pixie[2].size.x - 1),
-			i[0] * (pixie[2].size.y - 1));
-	else if (map[i[0]][i[1]] == 'P')
+	else if (c == 'P')
 		mlx_put_image_to_window(data.mlx, data.window.reference,
 			pixie[3].reference, i[1] * (pixie[3].size.x - 1),
 			i[0] * (pixie[3].size.y - 1));
+	else if (c == 'E')
+		mlx_put_image_to_window(data.mlx, data.window.reference,
+			pixie[2].reference, i[1] * (pixie[2].size.x - 1),
+			i[0] * (pixie[2].size.y - 1));
 }
 
-void	ft_put_sprite(t_program data, char **map)
+t_image	*ft_put_sprite(t_program data)
 {
-	t_image	pixie[6];
-	int		index[2];
+	t_image	*pixie;
 
+	pixie = malloc(sizeof(t_image) * 6);
 	pixie[0].reference = mlx_xpm_file_to_image(data.mlx, "images/wall.xpm",
 			&pixie[0].size.x, &pixie[0].size.y);
 	pixie[1].reference = mlx_xpm_file_to_image(data.mlx, "images/sweet.xpm",
 			&pixie[1].size.x, &pixie[1].size.y);
 	pixie[2].reference = mlx_xpm_file_to_image(data.mlx, "images/house.xpm",
 			&pixie[2].size.x, &pixie[2].size.y);
-	pixie[3].reference = mlx_xpm_file_to_image(data.mlx, "images/befana.xpm",
-			&pixie[3].size.x, &pixie[3].size.y);
-	pixie[4].reference = mlx_xpm_file_to_image(data.mlx, "player.xpm",
-			&pixie[3].size.x, &pixie[3].size.y);
-	index[0] = 0;
-	index[1] = 0;
-	while (map[index[0]])
-	{	
-		while (map[index[0]][index[1]])
+	pixie[3].reference = mlx_xpm_file_to_image(data.mlx,
+			"images/befana_right.xpm", &pixie[3].size.x, &pixie[3].size.y);
+	pixie[4].reference = mlx_xpm_file_to_image(data.mlx, "images/floor.xpm",
+			&pixie[4].size.x, &pixie[4].size.y);
+	return (pixie);
+}
+
+void	ft_display_map(t_program data, char **map, t_image *pixie)
+{
+	int		i[2];
+	char	c;
+
+	i[0] = 0;
+	i[1] = 0;
+	while (map[i[0]])
+	{
+		i[1] = 0;
+		while (map[i[0]][i[1]] != '\n')
 		{
-			ft_invoke_pixie(data, map, pixie, index);
-			index[1]++;
+			c = map[i[0]][i[1]];
+			ft_invoke_pixie(c, i, data, pixie);
+			i[1]++;
 		}
-		index[1] = 0;
-		index[0]++;
+		i[0]++;
 	}
 }
 

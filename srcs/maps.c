@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:25:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/18 17:29:18 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/19 15:15:54 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ char	**ft_map_reader(char *filename)
 	fd = open(filename, O_RDONLY);
 	i = 0;
 	buffer = malloc(sizeof(char) * 1);
-	ft_printf("fd %d\n", fd);
 	if (!buffer || fd == -1)
 		return (NULL);
 	buffer[0] = '\0';
