@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/24 19:50:23 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/24 21:50:28 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ typedef struct s_program {
 	t_window	window;
 	t_image		sprite;
 	t_vector	sprite_position;
+	t_image		*pixies;
+	t_vector	*pix_position;
+	char		**map;
 }				t_program;
 
 // ---------------------------------
@@ -91,7 +94,7 @@ int			ft_map_parser(char **map);
 char		**ft_map_reader(char *filename);
 void		ft_map_freer(char **map);
 
-int			ft_input(int key, void *program);
+int			ft_input(int key, void *param);
 int			ft_update(void *param);
 
 void		ft_prop_init(t_prop *obj);
