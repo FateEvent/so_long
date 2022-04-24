@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:13:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/19 15:19:13 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/24 20:03:18 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 int	main(void)
 {
 	t_program	program;
+	t_vector	size;
 	t_image		*pix;
 	char		**arr;
 
 	program.mlx = mlx_init();
-	program.window = ft_new_window(program.mlx, 660, 500, "Befana!");
 	arr = ft_map_reader("map.ber");
 	if (arr != NULL || !ft_map_parser(arr))
 	{
+		size = calculate_window_size(arr);
+		program.window = ft_new_window(program.mlx, size.x, size.y, "Befana!");
 		pix = ft_put_sprite(program);
 		ft_display_map(program, arr, pix);
 		program.sprite = ft_new_sprite(program.mlx, "images/befana_right.xpm");

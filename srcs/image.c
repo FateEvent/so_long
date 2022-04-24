@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/19 16:47:18 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/24 18:33:33 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,18 @@ void	ft_invoke_pixie(char c, int *i, t_program data, t_image *pixie)
 		mlx_put_image_to_window(data.mlx, data.window.reference,
 			pixie[1].reference, i[1] * (pixie[1].size.x - 1),
 			i[0] * (pixie[1].size.y - 1));
-	else if (c == 'P')
-		mlx_put_image_to_window(data.mlx, data.window.reference,
-			pixie[3].reference, i[1] * (pixie[3].size.x - 1),
-			i[0] * (pixie[3].size.y - 1));
 	else if (c == 'E')
 		mlx_put_image_to_window(data.mlx, data.window.reference,
 			pixie[2].reference, i[1] * (pixie[2].size.x - 1),
 			i[0] * (pixie[2].size.y - 1));
+	else if (c == 'P')
+		mlx_put_image_to_window(data.mlx, data.window.reference,
+			pixie[3].reference, i[1] * (pixie[3].size.x - 1),
+			i[0] * (pixie[3].size.y - 1));
+	else
+		mlx_put_image_to_window(data.mlx, data.window.reference,
+			pixie[4].reference, i[1] * (pixie[4].size.x - 1),
+			i[0] * (pixie[4].size.y - 1));
 }
 
 t_image	*ft_put_sprite(t_program data)
@@ -47,14 +51,14 @@ t_image	*ft_put_sprite(t_program data)
 	pixie = malloc(sizeof(t_image) * 6);
 	pixie[0].reference = mlx_xpm_file_to_image(data.mlx, "images/wall.xpm",
 			&pixie[0].size.x, &pixie[0].size.y);
-	pixie[1].reference = mlx_xpm_file_to_image(data.mlx, "images/sweet.xpm",
+	pixie[1].reference = mlx_xpm_file_to_image(data.mlx, "images/sugarcane.xpm",
 			&pixie[1].size.x, &pixie[1].size.y);
 	pixie[2].reference = mlx_xpm_file_to_image(data.mlx, "images/house.xpm",
 			&pixie[2].size.x, &pixie[2].size.y);
 	pixie[3].reference = mlx_xpm_file_to_image(data.mlx,
 			"images/befana_right.xpm", &pixie[3].size.x, &pixie[3].size.y);
-	pixie[4].reference = mlx_xpm_file_to_image(data.mlx, "images/floor.xpm",
-			&pixie[4].size.x, &pixie[4].size.y);
+	pixie[4].reference = mlx_xpm_file_to_image(data.mlx,
+			"images/grass_tile.xpm", &pixie[4].size.x, &pixie[4].size.y);
 	return (pixie);
 }
 
@@ -65,15 +69,16 @@ void	ft_display_map(t_program data, char **map, t_image *pixie)
 
 	i[0] = 0;
 	i[1] = 0;
-	while (map[i[0]])
-	{
-		i[1] = 0;
-		while (map[i[0]][i[1]] != '\n')
+	while (i[0] * pixie[0].size.y < data.window.size.y && map[i[0]])
+	{	
+		while (i[1] * pixie[0].size.x < data.window.size.x
+			&& map[i[0]][i[1]] != '\n')
 		{
 			c = map[i[0]][i[1]];
 			ft_invoke_pixie(c, i, data, pixie);
 			i[1]++;
 		}
+		i[1] = 0;
 		i[0]++;
 	}
 }
@@ -91,7 +96,7 @@ void	ft_put_background(t_program data, char *path)
 	while (i * bg.size.y < data.window.size.y)
 	{	
 		while (j * bg.size.x < data.window.size.x)
-		{		
+		{
 			mlx_put_image_to_window(data.mlx, data.window.reference,
 				bg.reference, j * (bg.size.x - 1),
 				i * (bg.size.y - 1));

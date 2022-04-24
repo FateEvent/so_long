@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/19 16:43:22 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/24 19:50:23 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ typedef struct s_program {
 // FUNCTIONS
 
 t_window	ft_new_window(void *mlx, int width, int height, char *name);
+t_vector	calculate_window_size(char **map);
+
 t_image		ft_new_sprite(void *mlx, char *path);
 t_vector	ft_get_coordinates(char **map, char prop);
 void		ft_put_background(t_program data, char *path);
