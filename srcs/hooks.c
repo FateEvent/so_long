@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/24 22:02:17 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:04:01 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_input(int key, void *param)
 
 	program = (t_program *)param;
 	mlx_clear_window(program->mlx, program->window.reference);
-	ft_put_background(*program, "images/grass_tile.xpm");
 	ft_display_map(*program, (*program).map, (*program).pixies);
 	if (key == 124)
 		program->sprite_position.x += program->sprite.size.x;
