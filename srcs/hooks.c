@@ -6,12 +6,25 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/25 18:04:01 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/25 19:19:04 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
+/*
+void	ft_map_rewriter(t_vector position, char **map)
+{
+	t_vector	coord;
 
+	coord = position;
+	if (map[coord.x / 65][coord.y / 65]
+		&& map[coord.x / 65][coord.y / 65] != '0')
+	{
+		map[coord.x / 65][coord.y / 65] = '0';
+		ft_printf("coord %d, %d\n", coord.x / 65, coord.y / 65);
+	}
+}
+*/
 int	ft_input(int key, void *param)
 {
 	t_program	*program;
@@ -33,6 +46,8 @@ int	ft_input(int key, void *param)
 		program->sprite.reference, program->sprite_position.x,
 		program->sprite_position.y);
 	ft_printf("Key pressed -> %d\n", key);
+	ft_printf("coord -> %d, %d\n", program->sprite_position.x, program->sprite_position.y);
+//	ft_map_rewriter((*program).sprite_position, (*program).map);
 	return (0);
 }
 
