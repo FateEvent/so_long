@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/25 18:29:58 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:30:11 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_vector	calculate_window_size(char **map);
 
 t_image		ft_new_sprite(void *mlx, char *path);
 t_vector	ft_get_coordinates(char **map, char prop);
+t_vector	ft_get_x_and_y(char **map, char prop);
 void		ft_put_background(t_program data, char *path);
 t_image		*ft_put_sprite(t_program data);
 void		ft_invoke_pixie(char c, int *i, t_program data, t_image *pixie);
