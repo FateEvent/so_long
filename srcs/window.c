@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:13:29 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/24 20:02:36 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:37:21 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ t_vector	calculate_window_size(char **map)
 		}
 		size.y++;
 	}
-	ft_printf("%d, %d\n", size.x, size.y);
-	size.x *= 65;
-	size.y *= 65;
-	ft_printf("%d, %d\n", size.x, size.y);
+	size.x *= 63;
+	size.y *= 63;
 	return (size);
 }
 

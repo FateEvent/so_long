@@ -6,25 +6,22 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/25 19:19:04 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/26 18:22:34 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
-/*
-void	ft_map_rewriter(t_vector position, char **map)
-{
-	t_vector	coord;
 
-	coord = position;
-	if (map[coord.x / 65][coord.y / 65]
-		&& map[coord.x / 65][coord.y / 65] != '0')
+void	ft_map_rewriter(int y, int x, char **map)
+{
+	if (map[y / 63][x / 63]
+		&& map[y / 63][x / 63] == 'C')
 	{
-		map[coord.x / 65][coord.y / 65] = '0';
-		ft_printf("coord %d, %d\n", coord.x / 65, coord.y / 65);
+		map[y / 63][x / 63] = '0';
+		ft_printf("pos %d, %d\n", x / 63, y / 63);
 	}
 }
-*/
+
 int	ft_input(int key, void *param)
 {
 	t_program	*program;
@@ -32,22 +29,36 @@ int	ft_input(int key, void *param)
 	program = (t_program *)param;
 	mlx_clear_window(program->mlx, program->window.reference);
 	ft_display_map(*program, (*program).map, (*program).pixies);
-	if (key == 124)
+	if (key == 124 && (*program).map[program->sprite_position.y / 63][(program->sprite_position.x + program->sprite.size.x) / 63] != '1')
+	{
+		ft_map_rewriter(program->sprite_position.y, program->sprite_position.x + program->sprite.size.x, program->map);
 		program->sprite_position.x += program->sprite.size.x;
-	else if (key == 123)
+		
+	}
+	else if (key == 123 && (*program).map[program->sprite_position.y / 63][(program->sprite_position.x - program->sprite.size.x) / 63] != '1')
+	{
+		ft_map_rewriter(program->sprite_position.y, program->sprite_position.x - program->sprite.size.x, program->map);
 		program->sprite_position.x -= program->sprite.size.x;
-	else if (key == 125)
+		
+	}
+	else if (key == 125 && (*program).map[(program->sprite_position.y + program->sprite.size.y) / 63][program->sprite_position.x / 63] != '1')
+	{
+		ft_map_rewriter(program->sprite_position.y + program->sprite.size.y, program->sprite_position.x, program->map);
 		program->sprite_position.y += program->sprite.size.y;
-	else if (key == 126)
+		
+	}
+	else if (key == 126 && (*program).map[(program->sprite_position.y - program->sprite.size.y) / 63][program->sprite_position.x / 63] != '1')
+	{
+		ft_map_rewriter(program->sprite_position.y - program->sprite.size.y, program->sprite_position.x, program->map);
 		program->sprite_position.y -= program->sprite.size.y;
+	}
 	else if (key == 53)
 		exit(0);
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite.reference, program->sprite_position.x,
 		program->sprite_position.y);
 	ft_printf("Key pressed -> %d\n", key);
-	ft_printf("coord -> %d, %d\n", program->sprite_position.x, program->sprite_position.y);
-//	ft_map_rewriter((*program).sprite_position, (*program).map);
+	ft_printf("coord -> %d, %d\n", program->sprite_position.x / 63, program->sprite_position.y / 63);
 	return (0);
 }
 

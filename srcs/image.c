@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/25 18:30:08 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:35:43 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_image	*ft_put_sprite(t_program data)
 	pixie = malloc(sizeof(t_image) * 4);
 	pixie[0].reference = mlx_xpm_file_to_image(data.mlx, "images/wall.xpm",
 			&pixie[0].size.x, &pixie[0].size.y);
+	ft_printf("%d, %d\n", pixie[0].size.x, pixie[0].size.y);
 	pixie[1].reference = mlx_xpm_file_to_image(data.mlx, "images/sugarcane.xpm",
 			&pixie[1].size.x, &pixie[1].size.y);
 	pixie[2].reference = mlx_xpm_file_to_image(data.mlx, "images/house.xpm",
@@ -79,9 +80,9 @@ void	ft_display_map(t_program data, char **map, t_image *pixie)
 
 	i[0] = 0;
 	i[1] = 0;
-	while (i[0] * pixie[0].size.y < data.window.size.y && map[i[0]])
+	while (i[0] * 64 < data.window.size.y && map[i[0]])
 	{	
-		while (i[1] * pixie[0].size.x < data.window.size.x
+		while (i[1] * 64 < data.window.size.x
 			&& map[i[0]][i[1]] != '\n')
 		{
 			c = map[i[0]][i[1]];
