@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/26 20:30:11 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/26 22:02:03 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ typedef struct s_image {
 typedef struct s_program {
 	void		*mlx;
 	t_window	window;
-	t_image		sprite;
-	t_vector	sprite_position;
 	t_image		*pixies;
 	char		**map;
 }				t_program;

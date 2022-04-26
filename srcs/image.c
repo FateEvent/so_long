@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/26 20:14:30 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/26 22:00:59 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 
 #include "mlx_utils.h"
 
-static void	ft_invoke_pixie_pt2(char c, int *i, t_program data, t_image *pixie)
+static void	ft_invoke_pixie_pt2(int *i, t_program data, t_image *pixie)
 {
+	/*
 	if (c == 'P')
 	{
 		mlx_put_image_to_window(data.mlx, data.window.reference,
@@ -32,6 +33,7 @@ static void	ft_invoke_pixie_pt2(char c, int *i, t_program data, t_image *pixie)
 			i[0] * (pixie[4].size.y - 1));
 	}
 	else
+	*/
 		mlx_put_image_to_window(data.mlx, data.window.reference,
 			pixie[3].reference, i[1] * (pixie[3].size.x - 1),
 			i[0] * (pixie[3].size.y - 1));
@@ -63,7 +65,7 @@ void	ft_invoke_pixie(char c, int *i, t_program data, t_image *pixie)
 			i[0] * (pixie[2].size.y - 1));
 	}
 	else
-		ft_invoke_pixie_pt2(c, i, data, pixie);
+		ft_invoke_pixie_pt2(i, data, pixie);
 }
 
 t_image	*ft_put_sprite(t_program data)
