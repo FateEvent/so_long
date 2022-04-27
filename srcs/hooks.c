@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/27 12:41:06 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/27 12:54:52 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,95 @@ void	move_ur_ass(char **map)
 */
 	if (d_pos.x > e_pos.x)
 	{
-		map[d_pos.y][d_pos.x] = '0';
-		map[d_pos.y][d_pos.x - 1] = 'K';
+		if (map[d_pos.y][d_pos.x - 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x - 1] = 'K';
+		}
+		else if (map[d_pos.y + 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y + 1][d_pos.x] = 'K';
+		}
+		else if (map[d_pos.y - 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y - 1][d_pos.x] = 'K';
+		}
+		else if (map[d_pos.y][d_pos.x + 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x + 1] = 'K';
+		}
 	}
 	else if (d_pos.x < e_pos.x)
 	{
-		map[d_pos.y][d_pos.x] = '0';
-		map[d_pos.y][d_pos.x + 1] = 'K';
+		if (map[d_pos.y][d_pos.x + 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x + 1] = 'K';
+		}
+		else if (map[d_pos.y + 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y + 1][d_pos.x] = 'K';
+		}
+		else if (map[d_pos.y][d_pos.x - 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x - 1] = 'K';
+		}
+		else if (map[d_pos.y - 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y - 1][d_pos.x] = 'K';
+		}
 	}
 	else if (d_pos.y < e_pos.y)
 	{
-		map[d_pos.y][d_pos.x] = '0';
-		map[d_pos.y + 1][d_pos.x] = 'K';
+		if (map[d_pos.y + 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y + 1][d_pos.x] = 'K';
+		}
+		else if (map[d_pos.y - 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y - 1][d_pos.x] = 'K';
+		}
+		else if (map[d_pos.y][d_pos.x + 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x + 1] = 'K';
+		}
+		else if (map[d_pos.y][d_pos.x - 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x - 1] = 'K';
+		}
 	}
 	else if (d_pos.y > e_pos.y)
 	{
-		map[d_pos.y][d_pos.x] = '0';
-		map[d_pos.y - 1][d_pos.x] = 'K';
+		if (map[d_pos.y - 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y - 1][d_pos.x] = 'K';
+		}
+		else if (map[d_pos.y][d_pos.x + 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x + 1] = 'K';
+		}
+		else if (map[d_pos.y][d_pos.x - 1] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y][d_pos.x - 1] = 'K';
+		}
+		else if (map[d_pos.y + 1][d_pos.x] != '1')
+		{
+			map[d_pos.y][d_pos.x] = '0';
+			map[d_pos.y + 1][d_pos.x] = 'K';
+		}
 	}
 }
 
