@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:13:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/26 21:41:08 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:11:03 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	t_vector	size;
 
 	program.mlx = mlx_init();
-	program.map = ft_map_reader("map.ber");
+	program.map = ft_map_reader("map02.ber");
 	if (program.map != NULL || !ft_map_parser(program.map))
 	{
 		size = calculate_window_size(program.map);
