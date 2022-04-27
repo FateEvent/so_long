@@ -6,11 +6,25 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/27 16:33:34 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:41:17 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
+
+t_vector	get_char_pos(char **map)
+{
+	t_vector	pos;
+
+	pos = ft_get_x_and_y(map, 'P');
+	if (pos.x == -1)
+		pos = ft_get_x_and_y(map, 'L');
+	if (pos.x == -1)
+		pos = ft_get_x_and_y(map, 'F');
+	if (pos.x == -1)
+		pos = ft_get_x_and_y(map, 'B');
+	return (pos);
+}
 
 int	verify_conditions(char **map)
 {
@@ -31,13 +45,7 @@ void	move_ur_ass(char **map)
 
 	d_pos = ft_get_x_and_y(map, 'K');
 	e_pos = ft_get_x_and_y(map, 'E');
-	c_pos = ft_get_x_and_y(map, 'P');
-	if (c_pos.x == -1)
-		c_pos = ft_get_x_and_y(map, 'L');
-	if (c_pos.x == -1)
-		c_pos = ft_get_x_and_y(map, 'F');
-	if (c_pos.x == -1)
-		c_pos = ft_get_x_and_y(map, 'B');
+	c_pos = get_char_pos(map);
 	if (d_pos.x > e_pos.x)
 	{
 		if (map[d_pos.y][d_pos.x - 1] != '1')
@@ -176,40 +184,28 @@ void	ft_map_rewriter(int y, int x, char **map)
 
 void	ft_display_moves_pt2(t_vector pos, char **map, int key)
 {
-	if (key == 125 && map[pos.y + 1][pos.x] != '1'
-		&& map[pos.y - 1][pos.x] != 'E')
+	if (key == 125 && map[pos.y + 1][pos.x] != '1')
 	{
-		map[pos.y][pos.x] = '0';
 		if (map[pos.y + 1][pos.x] == 'C' || map[pos.y + 1][pos.x] == '0')
+		{
+			map[pos.y][pos.x] = '0';
 			map[pos.y + 1][pos.x] = 'F';
-		if (map[pos.y + 1][pos.x] == 'E' && verify_conditions(map))
+		}
+		else if (map[pos.y + 1][pos.x] == 'E' && verify_conditions(map))
 			exit(0);
 	}
-	else if (key == 126 && map[pos.y - 1][pos.x] != '1'
-		&& map[pos.y + 1][pos.x] != 'E')
+	else if (key == 126 && map[pos.y - 1][pos.x] != '1')
 	{
-		map[pos.y][pos.x] = '0';
 		if (map[pos.y - 1][pos.x] == 'C' || map[pos.y - 1][pos.x] == '0')
+		{
+			map[pos.y][pos.x] = '0';
 			map[pos.y - 1][pos.x] = 'B';
-		if (map[pos.y - 1][pos.x] == 'E' && verify_conditions(map))
+		}
+		else if (map[pos.y - 1][pos.x] == 'E' && verify_conditions(map))
 			exit(0);
 	}
 	else if (key == 53)
 		exit(0);
-}
-
-t_vector	get_char_pos(char **map)
-{
-	t_vector	pos;
-
-	pos = ft_get_x_and_y(map, 'P');
-	if (pos.x == -1)
-		pos = ft_get_x_and_y(map, 'L');
-	if (pos.x == -1)
-		pos = ft_get_x_and_y(map, 'F');
-	if (pos.x == -1)
-		pos = ft_get_x_and_y(map, 'B');
-	return (pos);
 }
 
 void	ft_display_moves(char **map, int key)
@@ -217,22 +213,24 @@ void	ft_display_moves(char **map, int key)
 	t_vector	pos;
 
 	pos = get_char_pos(map);
-	if (key == 123 && map[pos.y][pos.x - 1] != '1'
-		&& map[pos.y][pos.x - 1] != 'E')
+	if (key == 123 && map[pos.y][pos.x - 1] != '1')
 	{
-		map[pos.y][pos.x] = '0';
 		if (map[pos.y][pos.x - 1] == 'C' || map[pos.y][pos.x - 1] == '0')
+		{
+			map[pos.y][pos.x] = '0';
 			map[pos.y][pos.x - 1] = 'L';
-		if (map[pos.y][pos.x - 1] == 'E' && verify_conditions(map))
+		}
+		else if (map[pos.y][pos.x - 1] == 'E' && verify_conditions(map))
 			exit(0);
 	}
-	else if (key == 124 && map[pos.y][pos.x + 1] != '1'
-		&& map[pos.y][pos.x + 1] != 'E')
+	else if (key == 124 && map[pos.y][pos.x + 1] != '1')
 	{
-		map[pos.y][pos.x] = '0';
 		if (map[pos.y][pos.x + 1] == 'C' || map[pos.y][pos.x + 1] == '0')
+		{
+			map[pos.y][pos.x] = '0';
 			map[pos.y][pos.x + 1] = 'P';
-		if (map[pos.y][pos.x + 1] == 'E' && verify_conditions(map))
+		}
+		else if (map[pos.y][pos.x + 1] == 'E' && verify_conditions(map))
 			exit(0);
 	}
 	else
@@ -248,10 +246,9 @@ int	ft_input(int key, void *param)
 	move_ur_ass((*program).map);
 	mlx_clear_window(program->mlx, program->window.reference);
 	ft_display_map(*program, (*program).map, (*program).pixies);
-	ft_printf("Key pressed -> %d\n", key);
 	return (0);
 }
-
+/*
 int	ft_update(void *param)
 {
 	t_program	*program;
@@ -259,7 +256,7 @@ int	ft_update(void *param)
 	t_vector	pos;
 
 	program = (t_program *)param;
-	pos = ft_get_coordinates(program->map, 'P');
+	pos = get_char_pos((*program).map);
 	frame++;
 	if (frame == ANIMATION_FRAMES)
 		pos.y += 1;
@@ -268,8 +265,9 @@ int	ft_update(void *param)
 		pos.y -= 1;
 		frame = 0;
 	}
-//	mlx_put_image_to_window(program->mlx, program->window.reference,
-//		program->pixies[4].reference, pos.x, pos.y);
+	mlx_put_image_to_window(program->mlx, program->window.reference,
+		program->pixies[4].reference, pos.x, pos.y);
 	ft_printf("input %d, %d\n", pos.x, pos.y);
 	return (0);
 }
+*/
