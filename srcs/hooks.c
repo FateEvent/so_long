@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/27 19:41:17 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:00:43 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,134 @@ int	verify_conditions(char **map)
 		return (0);
 }
 
+static void	track_ur_move_up(char **map, t_vector pos)
+{
+	if (map[pos.y - 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y - 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y - 1][pos.x] = 'K';
+	}
+	else if (map[pos.y][pos.x + 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x + 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x + 1] = 'K';
+	}
+	else if (map[pos.y + 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y + 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y + 1][pos.x] = 'K';
+	}
+	else if (map[pos.y][pos.x - 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x - 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x - 1] = 'K';
+	}
+}
+
+static void	track_ur_move_down(char **map, t_vector pos)
+{
+	if (map[pos.y + 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y + 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y + 1][pos.x] = 'K';
+	}
+	else if (map[pos.y][pos.x - 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x - 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x - 1] = 'K';
+	}
+	else if (map[pos.y][pos.x + 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x + 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x + 1] = 'K';
+	}
+	else if (map[pos.y - 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y - 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y - 1][pos.x] = 'K';
+	}
+}
+
+static void	track_ur_move_right(char **map, t_vector pos)
+{
+	if (map[pos.y][pos.x + 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x + 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x + 1] = 'K';
+	}
+	else if (map[pos.y + 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y + 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y + 1][pos.x] = 'K';
+	}
+	else if (map[pos.y][pos.x - 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x - 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x - 1] = 'K';
+	}
+	else if (map[pos.y - 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y - 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y - 1][pos.x] = 'K';
+	}
+}
+
+static void	track_ur_move_left(char **map, t_vector pos)
+{
+	if (map[pos.y][pos.x - 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x - 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x - 1] = 'K';
+	}
+	else if (map[pos.y + 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y + 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y + 1][pos.x] = 'K';
+	}
+	else if (map[pos.y - 1][pos.x] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y - 1][pos.x] == 'E')
+			exit(0);
+		map[pos.y - 1][pos.x] = 'K';
+	}
+	else if (map[pos.y][pos.x + 1] != '1')
+	{
+		map[pos.y][pos.x] = '0';
+		if (map[pos.y][pos.x + 1] == 'E')
+			exit(0);
+		map[pos.y][pos.x + 1] = 'K';
+	}
+}
+
 void	move_ur_ass(char **map)
 {
 	t_vector	d_pos;
@@ -47,129 +175,13 @@ void	move_ur_ass(char **map)
 	e_pos = ft_get_x_and_y(map, 'E');
 	c_pos = get_char_pos(map);
 	if (d_pos.x > e_pos.x)
-	{
-		if (map[d_pos.y][d_pos.x - 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x - 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x - 1] = 'K';
-		}
-		else if (map[d_pos.y + 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y + 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y + 1][d_pos.x] = 'K';
-		}
-		else if (map[d_pos.y - 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y - 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y - 1][d_pos.x] = 'K';
-		}
-		else if (map[d_pos.y][d_pos.x + 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x + 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x + 1] = 'K';
-		}
-	}
-	else if (d_pos.x < e_pos.x)
-	{
-		if (map[d_pos.y][d_pos.x + 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x + 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x + 1] = 'K';
-		}
-		else if (map[d_pos.y + 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y + 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y + 1][d_pos.x] = 'K';
-		}
-		else if (map[d_pos.y][d_pos.x - 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x - 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x - 1] = 'K';
-		}
-		else if (map[d_pos.y - 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y - 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y - 1][d_pos.x] = 'K';
-		}
-	}
-	else if (d_pos.y < e_pos.y)
-	{
-		if (map[d_pos.y + 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y + 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y + 1][d_pos.x] = 'K';
-		}
-		else if (map[d_pos.y - 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y - 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y - 1][d_pos.x] = 'K';
-		}
-		else if (map[d_pos.y][d_pos.x + 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x + 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x + 1] = 'K';
-		}
-		else if (map[d_pos.y][d_pos.x - 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x - 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x - 1] = 'K';
-		}
-	}
+		track_ur_move_left(map, d_pos);
 	else if (d_pos.y > e_pos.y)
-	{
-		if (map[d_pos.y - 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y - 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y - 1][d_pos.x] = 'K';
-		}
-		else if (map[d_pos.y][d_pos.x + 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x + 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x + 1] = 'K';
-		}
-		else if (map[d_pos.y][d_pos.x - 1] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y][d_pos.x - 1] == 'E')
-				exit(0);
-			map[d_pos.y][d_pos.x - 1] = 'K';
-		}
-		else if (map[d_pos.y + 1][d_pos.x] != '1')
-		{
-			map[d_pos.y][d_pos.x] = '0';
-			if (map[d_pos.y + 1][d_pos.x] == 'E')
-				exit(0);
-			map[d_pos.y + 1][d_pos.x] = 'K';
-		}
-	}
+		track_ur_move_up(map, d_pos);
+	else if (d_pos.x < e_pos.x)
+		track_ur_move_right(map, d_pos);
+	else if (d_pos.y < e_pos.y)
+		track_ur_move_down(map, d_pos);
 }
 
 void	ft_map_rewriter(int y, int x, char **map)
