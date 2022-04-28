@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/28 15:24:14 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/28 17:49:50 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <sys/types.h>
+# include <math.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
@@ -73,6 +74,7 @@ typedef struct s_program {
 	t_window	window;
 	t_image		*pixies;
 	char		**map;
+	int			frame;
 }				t_program;
 
 // ---------------------------------
@@ -84,9 +86,14 @@ t_vector	calculate_window_size(char **map);
 t_image		ft_new_sprite(void *mlx, char *path);
 t_vector	ft_get_coordinates(char **map, char prop);
 t_vector	ft_get_x_and_y(char **map, char prop);
+t_vector	ft_get_char_pos(char **map);
 void		ft_put_background(t_program data, char *path);
 t_image		*ft_put_sprite(t_program data);
 void		ft_invoke_pixie(char c, int *i, t_program data, t_image *pixie);
+void		ft_invoke_char(t_program data, t_image *pixie, t_vector pos,
+				int var);
+void		ft_invoke_enemy(t_program data, t_image *pixie, t_vector pos,
+				int var);
 void		ft_display_map(t_program data, char **map, t_image *pixie);
 
 int			ft_map_parser(char **map);

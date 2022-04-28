@@ -6,25 +6,12 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/28 12:00:43 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/28 17:58:50 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
-
-t_vector	get_char_pos(char **map)
-{
-	t_vector	pos;
-
-	pos = ft_get_x_and_y(map, 'P');
-	if (pos.x == -1)
-		pos = ft_get_x_and_y(map, 'L');
-	if (pos.x == -1)
-		pos = ft_get_x_and_y(map, 'F');
-	if (pos.x == -1)
-		pos = ft_get_x_and_y(map, 'B');
-	return (pos);
-}
+#include <math.h>
 
 int	verify_conditions(char **map)
 {
@@ -173,7 +160,7 @@ void	move_ur_ass(char **map)
 
 	d_pos = ft_get_x_and_y(map, 'K');
 	e_pos = ft_get_x_and_y(map, 'E');
-	c_pos = get_char_pos(map);
+	c_pos = ft_get_char_pos(map);
 	if (d_pos.x > e_pos.x)
 		track_ur_move_left(map, d_pos);
 	else if (d_pos.y > e_pos.y)
@@ -224,7 +211,7 @@ void	ft_display_moves(char **map, int key)
 {
 	t_vector	pos;
 
-	pos = get_char_pos(map);
+	pos = ft_get_char_pos(map);
 	if (key == 123 && map[pos.y][pos.x - 1] != '1')
 	{
 		if (map[pos.y][pos.x - 1] == 'C' || map[pos.y][pos.x - 1] == '0')
@@ -260,26 +247,20 @@ int	ft_input(int key, void *param)
 	ft_display_map(*program, (*program).map, (*program).pixies);
 	return (0);
 }
-/*
+
 int	ft_update(void *param)
 {
 	t_program	*program;
-	static int	frame;
-	t_vector	pos;
+	t_vector	basic_pos[2];
+	t_vector	var;
 
 	program = (t_program *)param;
-	pos = get_char_pos((*program).map);
-	frame++;
-	if (frame == ANIMATION_FRAMES)
-		pos.y += 1;
-	else if (frame >= ANIMATION_FRAMES * 2)
-	{
-		pos.y -= 1;
-		frame = 0;
-	}
-	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->pixies[4].reference, pos.x, pos.y);
-	ft_printf("input %d, %d\n", pos.x, pos.y);
+	basic_pos[0] = ft_get_char_pos((*program).map);
+	basic_pos[1] = ft_get_x_and_y((*program).map, 'K');
+	var.x = sin(program->frame / 20) * 2;
+	var.y = sin(program->frame / 13) * 2;
+	program->frame++;
+	ft_invoke_char(*program, (*program).pixies, basic_pos[0], var.x);
+	ft_invoke_enemy(*program, (*program).pixies, basic_pos[1], var.y);
 	return (0);
 }
-*/
