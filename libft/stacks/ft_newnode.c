@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 15:16:43 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/29 17:45:42 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/29 19:09:06 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #include "stacks.h"
 
-t_node	*ft_newnode(void *content)
+t_node	*ft_newnode(int content)
 {
 	t_node	*stack;
 
