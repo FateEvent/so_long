@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_init.c                                    :+:      :+:    :+:   */
+/*   ft_stackdelone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/29 19:12:14 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/29 19:32:00 by faventur         ###   ########.fr       */
+/*   Created: 2022/04/29 20:16:24 by faventur          #+#    #+#             */
+/*   Updated: 2022/04/29 20:18:59 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** The ft_stackdelone() function frees the memory of the element passed
+** as a parameter with the del function and free(3). The memory of
+** next must be freed.
+*/
+
 #include "stacks.h"
 
-void	ft_stack_init(int argc, char *argv[], t_stack *stack)
+void	ft_stackdelone(t_stack *stack, void (*del)(void *))
 {
-	char	**arg_arr;
-	int		i;
-
-	i = 0;
-	if (argc == 2)
-		arg_arr = ft_split(argv[1], ' ');
-	else
-	{
-		i = 1;
-		arg_arr = argv;
-	}
-	while (arg_arr[i])
-	{
-		ft_stackadd_bottom(stack, ft_newnode(ft_atoi(arg_arr[i])));
-		i++;
-	}
-	if (argc == 2)
-		free(arg_arr);
+	if (!stack || !del)
+		return ;
+	del(stack->content);
+	free(stack);
 }

@@ -6,33 +6,29 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 09:53:37 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/18 17:08:51 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/29 20:21:35 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** The ft_stackclear() function suppresses and frees the memory of the
 ** the element passed as a parameter and of all the following elements
-** by using free(3). Finally, the initial pointer is set to NULL.
+** by using the del function and free(3). Finally, the initial pointer
+** is to be set to NULL.
 */
 
 #include "stacks.h"
 
-void	ft_stackclear(t_stack **stack)
+void	ft_stackclear(t_stack **stack, void (*del)(void *))
 {
-	t_node	*current;
-	t_node	*delenda;
+	t_stack	*delenda;
 
-	if (*stack != NULL)
+	if (!stack || !del)
+		return ;
+	while (*stack)
 	{
-		current = (*stack)->top;
-		while (current != NULL)
-		{
-			delenda = current;
-			current = current->next;
-			free(delenda);
-		}
-		free(*stack);
-		*stack = NULL;
+		delenda = (*stack)->next;
+		ft_stackdelone(*stack, del);
+		*stack = delenda;
 	}
 }

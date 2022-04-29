@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/10 17:55:49 by faventur          #+#    #+#              #
-#    Updated: 2022/04/29 19:37:00 by faventur         ###   ########.fr        #
+#    Updated: 2022/04/29 20:22:50 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ SRCS_L	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	ft_lstmap.c
 
 SRCS_S	= ft_stacknew.c ft_newnode.c ft_stackadd_top.c \
-	ft_stackadd_bottom.c ft_stackclear.c ft_stackinsert.c \
-	ft_stacksize.c \
+	ft_stackadd_bottom.c ft_stackdelone.c ft_stackclear.c \
+	ft_stackinsert.c ft_stacksize.c \
 
 OBJS	= $(addprefix srcs/, ${SRCS:.c=.o})
 
