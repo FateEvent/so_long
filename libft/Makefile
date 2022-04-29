@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/10 17:55:49 by faventur          #+#    #+#              #
-#    Updated: 2022/04/15 16:57:50 by faventur         ###   ########.fr        #
+#    Updated: 2022/04/29 17:41:51 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,16 +22,26 @@ SRCS	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 	ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_putchar.c \
 	ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c \
 	ft_putendl_fd.c ft_putnbr_fd.c ft_putnbr_base.c ft_sort_int_tab.c \
-	ft_power.c ft_binary2char.c ft_strtolol.c get_next_line.c ft_printf.c \
-	ft_printf_basic.c ft_printf_utils.c
+	ft_power.c ft_binary2char.c ft_strtolol.c ft_puterror.c \
+	ft_printf.c ft_printf_basic.c ft_printf_utils.c get_next_line.c
 
-SRCSB	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+SRCSB	= get_next_line_bonus.c
+
+SRCS_L	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-	ft_lstmap.c get_next_line_bonus.c
+	ft_lstmap.c
+
+SRCS_S	= ft_stacknew.c ft_newnode.c ft_stack_init.c ft_stackadd_top.c \
+	ft_stackadd_bottom.c ft_stackclear.c ft_stackinsert.c ft_stackdisplay.c \
+	ft_stacksize.c ft_assign_index.c
 
 OBJS	= $(addprefix srcs/, ${SRCS:.c=.o})
 
 OBJSB	= $(addprefix srcsb/, ${SRCSB:.c=.o})
+
+OBJS_L	= $(addprefix lists/, ${SRCS_L:.c=.o})
+
+OBJS_S	= $(addprefix stacks/, ${SRCS_S:.c=.o})
 
 NAME	= libft.a
 
@@ -46,8 +56,14 @@ all:		${NAME}
 bonus:		${NAME} ${OBJSB}
 			ar -rcs ${NAME} ${OBJSB}
 
+lists:		${NAME} ${OBJS_L}
+			ar -rcs ${NAME} ${OBJS_L}
+
+stacks:		${NAME} ${OBJS_S}
+			ar -rcs ${NAME} ${OBJS_S}
+
 clean:		
-			rm -f ${OBJS} ${OBJSB}
+			rm -f ${OBJS} ${OBJSB} ${OBJS_L} ${OBJS_S}
 
 fclean:		clean
 			rm -f ${NAME}

@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 11:47:12 by faventur          #+#    #+#              #
-#    Updated: 2022/04/25 17:29:38 by faventur         ###   ########.fr        #
+#    Updated: 2022/04/29 17:38:22 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ CURSIVE = \033[3m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -sC ./libft
+	@$(MAKE) stacks -sC ./libft
 	@mv ./libft/libft.a .
 	@gcc $(FLAGS) $(OBJS) $(LINKS) libft.a -o $(NAME)
 	@echo "$(CURSIVE)$(HIBLUE)Parce qu'ouvrir une fenêtre,$(NONE)"
