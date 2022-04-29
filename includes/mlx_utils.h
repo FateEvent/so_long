@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/28 17:49:50 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/29 11:41:51 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_image {
 	int			bits_per_pixel;
 	int			line_size;
 	int			endian;
-	t_vector	prev_pos;
 }				t_image;
 
 typedef struct s_program {
