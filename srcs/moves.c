@@ -6,155 +6,161 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:44:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/30 14:58:32 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 20:00:51 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
 
-static void	track_ur_move_down(char **map, t_vector pos)
+static void	track_ur_move_up_pt2(t_program data, t_nme death)
 {
-	if (map[pos.y + 1][pos.x] != '1')
+	if (data.map[death.pos.y + 1][death.pos.x] != '1'
+			&& data.map[death.pos.y + 1][death.pos.x] != 'C'
+			&& death.pos.y + 1 != death.prev.y)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y + 1][pos.x] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y + 1][death.pos.x] == 'E')
 			exit(0);
-		map[pos.y + 1][pos.x] = 'K';
+		data.map[death.pos.y + 1][death.pos.x] = 'K';
 	}
-	else if (map[pos.y][pos.x - 1] != '1')
+	else if (data.map[death.pos.y][death.pos.x - 1] != '1'
+			&& data.map[death.pos.y][death.pos.x - 1] != 'C'
+			&& death.pos.x - 1 != death.prev.x)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x - 1] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y - 1][death.pos.x] == 'E')
 			exit(0);
-		map[pos.y][pos.x - 1] = 'K';
-	}
-	else if (map[pos.y][pos.x + 1] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x + 1] == 'E')
-			exit(0);
-		map[pos.y][pos.x + 1] = 'K';
-	}
-	else if (map[pos.y - 1][pos.x] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y - 1][pos.x] == 'E')
-			exit(0);
-		map[pos.y - 1][pos.x] = 'K';
+		data.map[death.pos.y][death.pos.x - 1] = 'K';
 	}
 }
 
-static void	track_ur_move_right(char **map, t_vector pos)
+void	track_ur_move_up(t_program data, t_nme death)
 {
-	if (map[pos.y][pos.x + 1] != '1')
+	if (data.map[death.pos.y - 1][death.pos.x] != '1'
+			&& data.map[death.pos.y - 1][death.pos.x] != 'C'
+			&& death.pos.y - 1 != death.prev.y)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x + 1] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y - 1][death.pos.x] == 'E')
 			exit(0);
-		map[pos.y][pos.x + 1] = 'K';
+		data.map[death.pos.y - 1][death.pos.x] = 'K';
 	}
-	else if (map[pos.y + 1][pos.x] != '1')
+	else if (data.map[death.pos.y][death.pos.x + 1] != '1'
+			&& data.map[death.pos.y][death.pos.x + 1] != 'C'
+			&& death.pos.x + 1 != death.prev.x)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y + 1][pos.x] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y][death.pos.x + 1] == 'E')
 			exit(0);
-		map[pos.y + 1][pos.x] = 'K';
+		data.map[death.pos.y][death.pos.x + 1] = 'K';
 	}
-	else if (map[pos.y][pos.x - 1] != '1')
+	else
+		track_ur_move_up_pt2(data, death);
+}
+
+static void	track_ur_move_left_pt2(t_program data, t_nme death)
+{
+	if (data.map[death.pos.y][death.pos.x + 1] != '1'
+			&& data.map[death.pos.y][death.pos.x + 1] != 'C'
+			&& death.pos.x + 1 != death.prev.x)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x - 1] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y][death.pos.x + 1] == 'E')
 			exit(0);
-		map[pos.y][pos.x - 1] = 'K';
+		data.map[death.pos.y][death.pos.x + 1] = 'K';
 	}
-	else if (map[pos.y - 1][pos.x] != '1')
+	else if (data.map[death.pos.y - 1][death.pos.x] != '1'
+			&& data.map[death.pos.y - 1][death.pos.x] != 'C'
+			&& death.pos.y - 1 != death.prev.y)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y - 1][pos.x] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y - 1][death.pos.x] == 'E')
 			exit(0);
-		map[pos.y - 1][pos.x] = 'K';
+		data.map[death.pos.y - 1][death.pos.x] = 'K';
 	}
 }
 
-static void	track_ur_move_up(char **map, t_vector pos)
+void	track_ur_move_left(t_program data, t_nme death)
 {
-	if (map[pos.y - 1][pos.x] != '1')
+	if (data.map[death.pos.y][death.pos.x - 1] != '1'
+			&& data.map[death.pos.y][death.pos.x - 1] != 'C'
+			&& death.pos.x - 1 != death.prev.x)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y - 1][pos.x] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y][death.pos.x - 1] == 'E')
 			exit(0);
-		map[pos.y - 1][pos.x] = 'K';
+		data.map[death.pos.y][death.pos.x - 1] = 'K';
 	}
-	else if (map[pos.y][pos.x + 1] != '1')
+	else if (data.map[death.pos.y + 1][death.pos.x] != '1'
+			&& data.map[death.pos.y + 1][death.pos.x] != 'C'
+			&& death.pos.y + 1 != death.prev.y)
 	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x + 1] == 'E')
+		data.map[death.pos.y][death.pos.x] = '0';
+		if (data.map[death.pos.y + 1][death.pos.x] == 'E')
 			exit(0);
-		map[pos.y][pos.x + 1] = 'K';
+		data.map[death.pos.y + 1][death.pos.x] = 'K';
 	}
-	else if (map[pos.y + 1][pos.x] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y + 1][pos.x] == 'E')
-			exit(0);
-		map[pos.y + 1][pos.x] = 'K';
-	}
-	else if (map[pos.y][pos.x - 1] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x - 1] == 'E')
-			exit(0);
-		map[pos.y][pos.x - 1] = 'K';
-	}
+	else
+		track_ur_move_left_pt2(data, death);
 }
 
-static void	track_ur_move_left(char **map, t_vector pos)
+void	move_ur_ass(t_program data)
 {
-	if (map[pos.y][pos.x - 1] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x - 1] == 'E')
-			exit(0);
-		map[pos.y][pos.x - 1] = 'K';
-	}
-	else if (map[pos.y + 1][pos.x] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y + 1][pos.x] == 'E')
-			exit(0);
-		map[pos.y + 1][pos.x] = 'K';
-	}
-	else if (map[pos.y - 1][pos.x] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y - 1][pos.x] == 'E')
-			exit(0);
-		map[pos.y - 1][pos.x] = 'K';
-	}
-	else if (map[pos.y][pos.x + 1] != '1')
-	{
-		map[pos.y][pos.x] = '0';
-		if (map[pos.y][pos.x + 1] == 'E')
-			exit(0);
-		map[pos.y][pos.x + 1] = 'K';
-	}
-}
-
-void	move_ur_ass(char **map)
-{
-	t_vector	d_pos;
 	t_vector	e_pos;
 	t_vector	c_pos;
+	t_nme		death;
 
-	d_pos = ft_get_x_and_y(map, 'K');
-	e_pos = ft_get_x_and_y(map, 'E');
-	c_pos = ft_get_char_pos(map);
-	if (d_pos.x > e_pos.x)
-		track_ur_move_left(map, d_pos);
-	else if (d_pos.y > e_pos.y)
-		track_ur_move_up(map, d_pos);
-	else if (d_pos.x <= e_pos.x)
-		track_ur_move_right(map, d_pos);
-	else if (d_pos.y <= e_pos.y)
-		track_ur_move_down(map, d_pos);
+	death.pos = ft_get_x_and_y(data.map, 'K');
+	e_pos = ft_get_x_and_y(data.map, 'E');
+	c_pos = ft_get_char_pos(data.map);
+	if (death.pos.x > e_pos.x)
+		track_ur_move_left(data, death);
+	else if (death.pos.y > e_pos.y)
+		track_ur_move_up(data, death);
+	else if (death.pos.x < e_pos.x)
+		track_ur_move_right(data, death);
+	else if (death.pos.y < e_pos.y)
+		track_ur_move_down(data, death);
+	death.prev = death.pos;
 }
+
+/*
+void boucle(t_program data)
+{
+	t_vector	start;
+	int			i;
+	int			j;
+
+	i = 5;
+	j = 3;
+	start = ft_get_x_and_y(data.map, 'K');
+	while(start.x < start.x + i)
+	{
+		data.map[start.y][start.x] = '0';
+		data.map[start.y][start.x + 1] = 'K';
+		start.x++;
+		i--;
+	}
+	while(start.y < start.y + j)
+	{
+		data.map[start.y][start.x] = '0';
+		data.map[start.y + j][start.x] = 'K';
+		start.y++;
+		j--;
+	}
+	while(start.x > start.x - i)
+	{
+		data.map[start.y][start.x] = '0';
+		data.map[start.y][start.x - 1] = '0';
+		start.x--;
+		i++;
+	}
+	while(start.y > start.y - j)
+	{
+		data.map[start.y][start.x] = '0';
+		data.map[start.y - j][start.x] = 'K';
+		start.y++;
+		j++;
+	}
+}
+*/

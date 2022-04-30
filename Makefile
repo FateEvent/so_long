@@ -6,12 +6,12 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 11:47:12 by faventur          #+#    #+#              #
-#    Updated: 2022/04/30 14:43:55 by faventur         ###   ########.fr        #
+#    Updated: 2022/04/30 18:33:46 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.c window.c image.c hooks.c maps.c utils.c display_image.c \
-	moves.c
+	moves.c moves2.c
 
 OBJS	= $(addprefix srcs/, ${SRCS:.c=.o})
 
@@ -31,7 +31,7 @@ CURSIVE = \033[3m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) stacks -sC ./libft
+	@$(MAKE) -sC ./libft
 	@mv ./libft/libft.a .
 	@gcc $(FLAGS) $(OBJS) $(LINKS) libft.a -o $(NAME)
 	@echo "$(CURSIVE)$(HIBLUE)Parce qu'ouvrir une fenêtre,$(NONE)"

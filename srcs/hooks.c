@@ -6,21 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/30 14:46:30 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 16:52:57 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
-
-void	ft_map_rewriter(int y, int x, char **map)
-{
-	if (map[y / 63][x / 63]
-		&& map[y / 63][x / 63] == 'C')
-	{
-		map[y / 63][x / 63] = '0';
-		ft_printf("pos %d, %d\n", x / 63, y / 63);
-	}
-}
 
 void	ft_display_moves_pt2(t_vector pos, char **map, int key)
 {
@@ -83,7 +73,7 @@ int	ft_input(int key, void *param)
 
 	program = (t_program *)param;
 	ft_display_moves(program->map, key);
-	move_ur_ass((*program).map);
+	move_ur_ass(*program);
 	mlx_clear_window(program->mlx, program->window.reference);
 	ft_display_map(*program, (*program).map, (*program).pixies);
 	return (0);

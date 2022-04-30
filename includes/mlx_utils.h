@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/30 14:52:33 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 19:49:00 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_image {
 	int			bits_per_pixel;
 	int			line_size;
 	int			endian;
-	t_vector	last_pos;
 }				t_image;
 
 typedef struct s_program {
@@ -69,6 +68,13 @@ typedef struct s_program {
 	char		**map;
 	int			frame;
 }				t_program;
+
+typedef struct s_nme
+{
+	t_vector	pos;
+	t_vector	prev;
+}				t_nme;
+
 
 // ---------------------------------
 // FUNCTIONS
@@ -89,7 +95,11 @@ void		ft_invoke_enemy(t_program data, t_image *pixie, t_vector pos,
 				int var);
 void		ft_display_map(t_program data, char **map, t_image *pixie);
 
-void		move_ur_ass(char **map);
+void		move_ur_ass(t_program data);
+void		track_ur_move_left(t_program data, t_nme death);
+void		track_ur_move_up(t_program data, t_nme death);
+void		track_ur_move_right(t_program data, t_nme death);
+void		track_ur_move_down(t_program data, t_nme death);
 
 int			ft_map_parser(char **map);
 char		**ft_map_reader(char *filename);
