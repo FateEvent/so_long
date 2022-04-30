@@ -6,11 +6,22 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 14:46:30 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/28 17:38:58 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 14:46:42 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
+
+int	verify_conditions(char **map)
+{
+	t_vector	candy_pos;
+
+	candy_pos = ft_get_x_and_y(map, 'C');
+	if (candy_pos.x < 0)
+		return (1);
+	else
+		return (0);
+}
 
 void	ft_prop_init(t_prop *obj)
 {

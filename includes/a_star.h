@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 19:19:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/29 19:44:09 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 12:16:50 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@
 
 typedef struct s_star
 {
+	int				f;
 	int				g;
 	int				h;
-	int				f;
-	t_vector		index;
+	t_vector		pos;
 }					t_star;
-
-
 
 #endif

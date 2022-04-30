@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/29 11:41:51 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 14:52:33 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
-
-// ----------------------------------
-// MACROS
-
-# ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 10
-# endif
 
 // ----------------------------------
 // STRUCTS
@@ -66,6 +59,7 @@ typedef struct s_image {
 	int			bits_per_pixel;
 	int			line_size;
 	int			endian;
+	t_vector	last_pos;
 }				t_image;
 
 typedef struct s_program {
@@ -95,6 +89,8 @@ void		ft_invoke_enemy(t_program data, t_image *pixie, t_vector pos,
 				int var);
 void		ft_display_map(t_program data, char **map, t_image *pixie);
 
+void		move_ur_ass(char **map);
+
 int			ft_map_parser(char **map);
 char		**ft_map_reader(char *filename);
 void		ft_map_freer(char **map);
@@ -103,5 +99,6 @@ int			ft_input(int key, void *param);
 int			ft_update(void *param);
 
 void		ft_prop_init(t_prop *obj);
+int			verify_conditions(char **map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:16:24 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/29 20:18:59 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 11:31:16 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 #include "stacks.h"
 
-void	ft_stackdelone(t_stack *stack, void (*del)(void *))
+void	ft_stackdelone(t_node *node, void (*del)(void *))
 {
-	if (!stack || !del)
+	if (!node || !del)
 		return ;
-	del(stack->content);
-	free(stack);
+	del(node->content);
+	free(node);
 }

@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 09:53:37 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/29 20:21:35 by faventur         ###   ########.fr       */
+/*   Updated: 2022/04/30 11:38:20 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@
 
 #include "stacks.h"
 
-void	ft_stackclear(t_stack **stack, void (*del)(void *))
+void	ft_stackclear(t_stack *stack, void (*del)(void *))
 {
-	t_stack	*delenda;
+	t_node	*temp;
+	t_node	*delenda;
 
 	if (!stack || !del)
 		return ;
-	while (*stack)
+	delenda = stack->top;
+	while (delenda != NULL)
 	{
-		delenda = (*stack)->next;
-		ft_stackdelone(*stack, del);
-		*stack = delenda;
+		temp = delenda->next;
+		ft_stackdelone(delenda, del);
+		delenda = temp;
 	}
 }
