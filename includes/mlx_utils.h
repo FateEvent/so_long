@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/30 19:49:00 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/01 12:59:21 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void		ft_invoke_enemy(t_program data, t_image *pixie, t_vector pos,
 				int var);
 void		ft_display_map(t_program data, char **map, t_image *pixie);
 
+void		ft_display_moves(t_program d, int key);
 void		move_ur_ass(t_program data);
 void		track_ur_move_left(t_program data, t_nme death);
 void		track_ur_move_up(t_program data, t_nme death);

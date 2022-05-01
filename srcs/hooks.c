@@ -6,65 +6,77 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/30 16:52:57 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/01 13:01:36 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
 
-void	ft_display_moves_pt2(t_vector pos, char **map, int key)
+void	ft_display_moves_pt2(t_program d, t_vector pos, int key)
 {
-	if (key == 125 && map[pos.y + 1][pos.x] != '1')
+	if (key == 1 && d.map[pos.y + 1][pos.x] != '1')
 	{
-		if (map[pos.y + 1][pos.x] == 'C' || map[pos.y + 1][pos.x] == '0')
+		if (d.map[pos.y + 1][pos.x] == 'C' || d.map[pos.y + 1][pos.x] == '0')
 		{
-			map[pos.y][pos.x] = '0';
-			map[pos.y + 1][pos.x] = 'F';
+			d.map[pos.y][pos.x] = '0';
+			d.map[pos.y + 1][pos.x] = 'F';
 		}
-		else if (map[pos.y + 1][pos.x] == 'E' && verify_conditions(map))
-			exit(0);
+		else if (d.map[pos.y + 1][pos.x] == 'E' && verify_conditions(d.map))
+		{
+			ft_printf("%d\n", verify_conditions(d.map));
+			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
+		}
 	}
-	else if (key == 126 && map[pos.y - 1][pos.x] != '1')
+	else if (key == 13 && d.map[pos.y - 1][pos.x] != '1')
 	{
-		if (map[pos.y - 1][pos.x] == 'C' || map[pos.y - 1][pos.x] == '0')
+		if (d.map[pos.y - 1][pos.x] == 'C' || d.map[pos.y - 1][pos.x] == '0')
 		{
-			map[pos.y][pos.x] = '0';
-			map[pos.y - 1][pos.x] = 'B';
+			d.map[pos.y][pos.x] = '0';
+			d.map[pos.y - 1][pos.x] = 'B';
 		}
-		else if (map[pos.y - 1][pos.x] == 'E' && verify_conditions(map))
-			exit(0);
+		else if (d.map[pos.y - 1][pos.x] == 'E' && verify_conditions(d.map))
+		{
+			ft_printf("%d\n", verify_conditions(d.map));
+			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
+		}
 	}
 	else if (key == 53)
 		exit(0);
 }
 
-void	ft_display_moves(char **map, int key)
+void	ft_display_moves(t_program d, int key)
 {
 	t_vector	pos;
 
-	pos = ft_get_char_pos(map);
-	if (key == 123 && map[pos.y][pos.x - 1] != '1')
+	pos = ft_get_char_pos(d.map);
+	if (key == 0 && d.map[pos.y][pos.x - 1] != '1')
 	{
-		if (map[pos.y][pos.x - 1] == 'C' || map[pos.y][pos.x - 1] == '0')
+		if (d.map[pos.y][pos.x - 1] == 'C' || d.map[pos.y][pos.x - 1] == '0')
 		{
-			map[pos.y][pos.x] = '0';
-			map[pos.y][pos.x - 1] = 'L';
+			d.map[pos.y][pos.x] = '0';
+			d.map[pos.y][pos.x - 1] = 'L';
 		}
-		else if (map[pos.y][pos.x - 1] == 'E' && verify_conditions(map))
-			exit(0);
+		else if (d.map[pos.y][pos.x - 1] == 'E' && verify_conditions(d.map))
+		{
+			ft_printf("%d\n", verify_conditions(d.map));
+			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
+		}
 	}
-	else if (key == 124 && map[pos.y][pos.x + 1] != '1')
+	else if (key == 2 && d.map[pos.y][pos.x + 1] != '1')
 	{
-		if (map[pos.y][pos.x + 1] == 'C' || map[pos.y][pos.x + 1] == '0')
+		if (d.map[pos.y][pos.x + 1] == 'C' || d.map[pos.y][pos.x + 1] == '0')
 		{
-			map[pos.y][pos.x] = '0';
-			map[pos.y][pos.x + 1] = 'P';
+			d.map[pos.y][pos.x] = '0';
+			d.map[pos.y][pos.x + 1] = 'P';
 		}
-		else if (map[pos.y][pos.x + 1] == 'E' && verify_conditions(map))
-			exit(0);
+		else if (d.map[pos.y][pos.x + 1] == 'E' && verify_conditions(d.map))
+		{
+			ft_printf("%d\n", verify_conditions(d.map));
+			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
+		}
 	}
 	else
-		ft_display_moves_pt2(pos, map, key);
+		ft_display_moves_pt2(d, pos, key);
 }
 
 int	ft_input(int key, void *param)
@@ -72,7 +84,7 @@ int	ft_input(int key, void *param)
 	t_program	*program;
 
 	program = (t_program *)param;
-	ft_display_moves(program->map, key);
+	ft_display_moves(*program, key);
 	move_ur_ass(*program);
 	mlx_clear_window(program->mlx, program->window.reference);
 	ft_display_map(*program, (*program).map, (*program).pixies);
