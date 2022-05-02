@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/28 17:45:45 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/02 20:29:40 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@
 */
 
 #include "mlx_utils.h"
+
+void	ft_put_banner(t_program data)
+{
+	t_image	banner;
+
+	banner.reference = mlx_xpm_file_to_image(data.mlx,
+			"images/steps.xpm", &banner.size.x, &banner.size.y);
+	mlx_put_image_to_window(data.mlx, data.window.reference,
+		banner.reference, 0 * banner.size.x,
+		0 * banner.size.y);
+}
 
 void	ft_invoke_enemy(t_program data, t_image *pixie, t_vector pos, int var)
 {
@@ -131,4 +142,5 @@ void	ft_display_map(t_program data, char **map, t_image *pixie)
 		i[1] = 0;
 		i[0]++;
 	}
+	ft_put_banner(data);
 }

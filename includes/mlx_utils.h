@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/01 12:59:21 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/02 20:00:18 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_program {
 	t_image		*pixies;
 	char		**map;
 	int			frame;
+	int			step_counter;
 }				t_program;
 
 typedef struct s_nme
@@ -86,6 +87,7 @@ t_image		ft_new_sprite(void *mlx, char *path);
 t_vector	ft_get_coordinates(char **map, char prop);
 t_vector	ft_get_x_and_y(char **map, char prop);
 t_vector	ft_get_char_pos(char **map);
+char		who_is_it(char **map);
 void		ft_put_background(t_program data, char *path);
 t_image		*ft_put_sprite(t_program data);
 void		ft_invoke_pixie(char c, int *i, t_program data, t_image *pixie);
@@ -95,7 +97,7 @@ void		ft_invoke_enemy(t_program data, t_image *pixie, t_vector pos,
 				int var);
 void		ft_display_map(t_program data, char **map, t_image *pixie);
 
-void		ft_display_moves(t_program d, int key);
+void		ft_display_moves(t_program d, int key, t_vector pos, int *counter);
 void		move_ur_ass(t_program data);
 void		track_ur_move_left(t_program data, t_nme death);
 void		track_ur_move_up(t_program data, t_nme death);
@@ -111,5 +113,7 @@ int			ft_update(void *param);
 
 void		ft_prop_init(t_prop *obj);
 int			verify_conditions(char **map);
+
+void		you_lose(t_program data);
 
 #endif

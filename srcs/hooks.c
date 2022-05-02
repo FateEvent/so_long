@@ -6,13 +6,13 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/01 13:01:36 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/02 19:27:30 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
 
-void	ft_display_moves_pt2(t_program d, t_vector pos, int key)
+void	ft_display_moves_pt2(t_program d, t_vector pos, int key, int *counter)
 {
 	if (key == 1 && d.map[pos.y + 1][pos.x] != '1')
 	{
@@ -20,12 +20,10 @@ void	ft_display_moves_pt2(t_program d, t_vector pos, int key)
 		{
 			d.map[pos.y][pos.x] = '0';
 			d.map[pos.y + 1][pos.x] = 'F';
+			(*counter)++;
 		}
 		else if (d.map[pos.y + 1][pos.x] == 'E' && verify_conditions(d.map))
-		{
-			ft_printf("%d\n", verify_conditions(d.map));
-			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
-		}
+			exit(0);
 	}
 	else if (key == 13 && d.map[pos.y - 1][pos.x] != '1')
 	{
@@ -33,34 +31,27 @@ void	ft_display_moves_pt2(t_program d, t_vector pos, int key)
 		{
 			d.map[pos.y][pos.x] = '0';
 			d.map[pos.y - 1][pos.x] = 'B';
+			(*counter)++;
 		}
 		else if (d.map[pos.y - 1][pos.x] == 'E' && verify_conditions(d.map))
-		{
-			ft_printf("%d\n", verify_conditions(d.map));
-			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
-		}
+			exit(0);
 	}
 	else if (key == 53)
 		exit(0);
 }
 
-void	ft_display_moves(t_program d, int key)
+void	ft_display_moves(t_program d, int key, t_vector pos, int *counter)
 {
-	t_vector	pos;
-
-	pos = ft_get_char_pos(d.map);
 	if (key == 0 && d.map[pos.y][pos.x - 1] != '1')
 	{
 		if (d.map[pos.y][pos.x - 1] == 'C' || d.map[pos.y][pos.x - 1] == '0')
 		{
 			d.map[pos.y][pos.x] = '0';
 			d.map[pos.y][pos.x - 1] = 'L';
+			(*counter)++;
 		}
 		else if (d.map[pos.y][pos.x - 1] == 'E' && verify_conditions(d.map))
-		{
-			ft_printf("%d\n", verify_conditions(d.map));
-			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
-		}
+			exit(0);
 	}
 	else if (key == 2 && d.map[pos.y][pos.x + 1] != '1')
 	{
@@ -68,26 +59,31 @@ void	ft_display_moves(t_program d, int key)
 		{
 			d.map[pos.y][pos.x] = '0';
 			d.map[pos.y][pos.x + 1] = 'P';
+			(*counter)++;
 		}
 		else if (d.map[pos.y][pos.x + 1] == 'E' && verify_conditions(d.map))
-		{
-			ft_printf("%d\n", verify_conditions(d.map));
-			mlx_string_put(d.mlx, d.window.reference, 4 * 63, 13 * 63, 0xff000000, "Victory!");
-		}
+			exit(0);
 	}
 	else
-		ft_display_moves_pt2(d, pos, key);
+		ft_display_moves_pt2(d, pos, key, counter);
 }
 
 int	ft_input(int key, void *param)
 {
 	t_program	*program;
+	t_vector	pos;
+	char		*number;
 
 	program = (t_program *)param;
-	ft_display_moves(*program, key);
+	pos = ft_get_char_pos((*program).map);
+	ft_display_moves(*program, key, pos, &(*program).step_counter);
 	move_ur_ass(*program);
 	mlx_clear_window(program->mlx, program->window.reference);
 	ft_display_map(*program, (*program).map, (*program).pixies);
+	number = ft_itoa((*program).step_counter);
+	mlx_string_put((*program).mlx, (*program).window.reference, 10, 44,
+		0xffffffff, number);
+	ft_printf("Number of steps: %d\n", (*program).step_counter);
 	return (0);
 }
 
