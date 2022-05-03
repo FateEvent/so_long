@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:06:06 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/03 16:56:31 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:29:36 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** NULL.
 */
 
-#include "stacks.h"
+#include "queues.h"
 
 t_queue	*ft_newqueue(void)
 {

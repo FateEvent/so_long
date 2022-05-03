@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:13:21 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/03 17:38:15 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:29:08 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ t_qelem	*ft_newqelem(void *content);
 void	ft_q_init(t_queue *suite);
 int		ft_enqueue(t_queue *suite, t_qelem *elem);
 int		ft_dequeue(t_queue *suite, void (*del)(void *));
+void	ft_q_iter(t_queue *suite, void (*f)(void *));
 
 #endif

@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/10 17:55:49 by faventur          #+#    #+#              #
-#    Updated: 2022/05/03 11:12:36 by faventur         ###   ########.fr        #
+#    Updated: 2022/05/03 18:30:41 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRCS_L	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 
 SRCS_S	= ft_stacknew.c ft_newnode.c ft_stackadd_top.c \
 	ft_stackadd_bottom.c ft_stackdelone.c ft_stackclear.c \
-	ft_stackinsert.c ft_stackiter.c ft_stacksize.c \
+	ft_stackinsert.c ft_stackiter.c ft_stacksize.c
+
+SRCS_Q	= ft_newqueue.c ft_newqelem.c ft_q_init.c ft_enqueue.c \
+	ft_dequeue.c ft_q_iter.c
 
 OBJS	= $(addprefix srcs/, ${SRCS:.c=.o})
 
@@ -42,6 +45,8 @@ OBJSB	= $(addprefix srcsb/, ${SRCSB:.c=.o})
 OBJS_L	= $(addprefix lists/, ${SRCS_L:.c=.o})
 
 OBJS_S	= $(addprefix stacks/, ${SRCS_S:.c=.o})
+
+OBJS_Q	= $(addprefix queues/, ${SRCS_Q:.c=.o})
 
 NAME	= libft.a
 
@@ -62,8 +67,11 @@ lists:		${NAME} ${OBJS_L}
 stacks:		${NAME} ${OBJS_S}
 			ar -rcs ${NAME} ${OBJS_S}
 
-clean:		
-			rm -f ${OBJS} ${OBJSB} ${OBJS_L} ${OBJS_S}
+queues:		${NAME} ${OBJS_Q}
+			ar -rcs ${NAME} ${OBJS_Q}
+
+clean:
+			rm -f ${OBJS} ${OBJSB} ${OBJS_L} ${OBJS_S} ${OBJS_Q}
 
 fclean:		clean
 			rm -f ${NAME}

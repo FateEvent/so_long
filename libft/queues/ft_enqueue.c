@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:33:09 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/03 17:32:19 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/03 19:29:10 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ int	ft_enqueue(t_queue *suite, t_qelem *elem)
 {
 	if (suite && elem)
 	{
-		suite->end = elem;
-		elem->next = NULL;
 		if (suite->length == 0)
 			suite->begin = elem;
+		else
+			suite->end->next = elem;
+		suite->end = elem;
 		suite->length++;
 		return (0);
 	}
