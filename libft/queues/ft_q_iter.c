@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_q_iter.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:06:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/03 17:35:54 by faventur         ###   ########.fr       */
+/*   Created: 2022/05/03 17:41:38 by faventur          #+#    #+#             */
+/*   Updated: 2022/05/03 17:52:48 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_lstdelone() function frees the memory of the element passed
-** as a parameter with the del function and free(3). The memory of
-** next mustn't be freed.
-*/
+#include "queues.h"
 
-#include "libft.h"
-
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_q_iter(t_queue *suite, void (*f)(void *))
 {
-	if (!lst || !del)
+	t_qelem	*current;
+
+	if (!suite || !f)
 		return ;
-	del(lst->content);
-	free(lst);
+	current = suite->begin;
+	while (current != NULL)
+	{
+		f(current->content);
+		current = current->next;
+	}
 }

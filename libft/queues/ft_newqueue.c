@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_newqueue.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:06:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/03 17:35:54 by faventur         ###   ########.fr       */
+/*   Created: 2022/04/09 20:06:06 by faventur          #+#    #+#             */
+/*   Updated: 2022/05/03 16:56:31 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** The ft_lstdelone() function frees the memory of the element passed
-** as a parameter with the del function and free(3). The memory of
-** next mustn't be freed.
+** The ft_newqueue() function allocates (with malloc(3)) and returns a
+** new "fresh" queue. The "begin" and "end" variables are set to
+** NULL.
 */
 
-#include "libft.h"
+#include "stacks.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_queue	*ft_newqueue(void)
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	t_queue	*new;
+
+	new = malloc(sizeof(*new));
+	if (new != NULL)
+	{
+		new->length = 0;
+		new->begin = NULL;
+		new->end = NULL;
+	}
+	return (new);
 }
