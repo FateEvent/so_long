@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:44:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 16:17:37 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/08 18:25:05 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	track_ur_move_down(t_program *data, t_nme death)
 	{
 		data->map[death.pos.y][death.pos.x] = '0';
 		if (data->map[death.pos.y + 1][death.pos.x] == who_is_it(data->map))
-			exit(0);
+			ft_break_the_game(data, "You lose!");
 		data->map[death.pos.y + 1][death.pos.x] = 'K';
 	}
 }
@@ -33,7 +33,7 @@ void	track_ur_move_right(t_program *data, t_nme death)
 	{
 		data->map[death.pos.y][death.pos.x] = '0';
 		if (data->map[death.pos.y][death.pos.x + 1] == who_is_it(data->map))
-			mlx_destroy_window(data->mlx, data->window.reference);
+			ft_break_the_game(data, "You lose!");
 		data->map[death.pos.y][death.pos.x + 1] = 'K';
 	}
 }

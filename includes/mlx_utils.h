@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 17:30:46 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/08 18:24:58 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int			verify_conditions(char **map);
 void		check_args(char argc);
 void		check_map_extension(char *argv[]);
 
+void		ft_break_the_game(t_program *data, char *end_msg);
 int			ft_close(void);
 
 #endif
