@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 15:18:33 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/08 17:30:46 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ int			ft_update(void *param);
 
 void		ft_prop_init(t_prop *obj);
 int			verify_conditions(char **map);
+
+void		check_args(char argc);
+void		check_map_extension(char *argv[]);
 
 int			ft_close(void);
 

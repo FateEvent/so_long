@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:44:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 16:37:52 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:51:56 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,16 @@ void	move_ur_ass(t_program *data)
 	t_nme		death;
 
 	death.pos = ft_get_x_and_y(data->map, 'K');
-	if (data->map[death.pos.y - 1][death.pos.x] == '1')
+	if (data->map[death.pos.y - 1][death.pos.x] == '1'
+		&& data->map[death.pos.y - 1][death.pos.x + 1] == '1')
 		track_ur_move_right(data, death);
-	if (data->map[death.pos.y][death.pos.x + 1] == '1')
+	if (data->map[death.pos.y][death.pos.x + 1] == '1'
+		&& data->map[death.pos.y + 1][death.pos.x + 1] == '1')
 		track_ur_move_down(data, death);
-	if (data->map[death.pos.y + 1][death.pos.x] == '1')
+	if (data->map[death.pos.y + 1][death.pos.x] == '1'
+		&& data->map[death.pos.y + 1][death.pos.x - 1] == '1')
 		track_ur_move_left(data, death);
-	if (data->map[death.pos.y][death.pos.x - 1] == '1')
+	if (data->map[death.pos.y][death.pos.x - 1] == '1'
+		&& data->map[death.pos.y - 1][death.pos.x - 1] == '1')
 		track_ur_move_up(data, death);
 }
