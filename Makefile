@@ -6,16 +6,16 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 11:47:12 by faventur          #+#    #+#              #
-#    Updated: 2022/05/08 17:11:11 by faventur         ###   ########.fr        #
+#    Updated: 2022/05/09 18:21:43 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.c window.c image.c hooks.c maps.c utils.c display_image.c \
-	moves.c moves2.c check.c
+	pixies.c moves.c tools.c check.c
 
 OBJS	= $(addprefix srcs/, ${SRCS:.c=.o})
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror
 
 LINKS = -lmlx -framework OpenGL -framework AppKit
 

@@ -6,67 +6,11 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:52:36 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 15:18:55 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:21:02 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_utils.h"
-
-void	ft_display_moves_pt2(t_program *d, t_vector pos, int key, int *counter)
-{
-	if (key == 1 && d->map[pos.y + 1][pos.x] != '1')
-	{
-		if (d->map[pos.y + 1][pos.x] == 'C' || d->map[pos.y + 1][pos.x] == '0')
-		{
-			d->map[pos.y][pos.x] = '0';
-			d->map[pos.y + 1][pos.x] = 'F';
-			(*counter)++;
-		}
-		else if (d->map[pos.y + 1][pos.x] == 'E' && verify_conditions(d->map))
-			exit(0);
-	}
-	else if (key == 13 && d->map[pos.y - 1][pos.x] != '1')
-	{
-		if (d->map[pos.y - 1][pos.x] == 'C' || d->map[pos.y - 1][pos.x] == '0')
-		{
-			d->map[pos.y][pos.x] = '0';
-			d->map[pos.y - 1][pos.x] = 'B';
-			(*counter)++;
-		}
-		else if (d->map[pos.y - 1][pos.x] == 'E' && verify_conditions(d->map))
-			exit(0);
-	}
-	else if (key == 53)
-		exit(0);
-}
-
-void	ft_display_moves(t_program *d, int key, t_vector pos, int *counter)
-{
-	if (key == 0 && d->map[pos.y][pos.x - 1] != '1')
-	{
-		if (d->map[pos.y][pos.x - 1] == 'C' || d->map[pos.y][pos.x - 1] == '0')
-		{
-			d->map[pos.y][pos.x] = '0';
-			d->map[pos.y][pos.x - 1] = 'L';
-			(*counter)++;
-		}
-		else if (d->map[pos.y][pos.x - 1] == 'E' && verify_conditions(d->map))
-			exit(0);
-	}
-	else if (key == 2 && d->map[pos.y][pos.x + 1] != '1')
-	{
-		if (d->map[pos.y][pos.x + 1] == 'C' || d->map[pos.y][pos.x + 1] == '0')
-		{
-			d->map[pos.y][pos.x] = '0';
-			d->map[pos.y][pos.x + 1] = 'P';
-			(*counter)++;
-		}
-		else if (d->map[pos.y][pos.x + 1] == 'E' && verify_conditions(d->map))
-			exit(0);
-	}
-	else
-		ft_display_moves_pt2(d, pos, key, counter);
-}
 
 int	ft_input(int key, void *param)
 {
