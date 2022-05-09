@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:13:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 17:33:26 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:04:24 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	check_map_extension(argv);
 	program.map = ft_map_reader(argv[1]);
 	if (!program.map || !ft_map_parser(program.map))
-		return (1);
+		ft_puterror("Error!");
 	program.frame = 0;
 	program.step_counter = 0;
 	size = calculate_window_size(program.map);

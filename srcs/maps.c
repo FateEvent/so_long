@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:25:26 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 12:23:24 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:09:05 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,15 @@ int	ft_map_parser(char **map)
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != line)
+		{
+			ft_puterror("The map doesn't seem valid!");
 			return (0);
+		}
 		i++;
 	}
 	if (ft_prop_counter(map) && ft_wall_parser(map))
 		return (1);
+	ft_puterror("The map doesn't seem valid!");
 	return (0);
 }
 
@@ -123,7 +127,7 @@ char	**ft_map_reader(char *filename)
 	fd = open(filename, O_RDONLY);
 	i = 0;
 	buffer = malloc(sizeof(char) * 1);
-	if (!buffer || fd == -1)
+	if (!buffer)
 		return (NULL);
 	buffer[0] = '\0';
 	temp = buffer;
