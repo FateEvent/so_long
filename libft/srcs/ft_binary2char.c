@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 11:47:32 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/15 16:54:41 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:15:48 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "libft.h"
 
-char	mt_binary2char(char *binary)
+char	ft_binary2char(char *binary)
 {
 	char	c;
 	int		i;
