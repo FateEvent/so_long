@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/08 18:24:58 by faventur         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:16:50 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int			ft_swing(t_program *data);
 
 int			ft_map_parser(char **map);
 char		**ft_map_reader(char *filename);
-void		ft_map_freer(char **map);
 
 int			ft_input(int key, void *param);
 int			ft_update(void *param);
