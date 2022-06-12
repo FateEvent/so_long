@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_sort_chartab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 14:24:18 by faventur          #+#    #+#             */
-/*   Updated: 2022/06/01 17:42:15 by faventur         ###   ########.fr       */
+/*   Created: 2022/06/01 15:20:58 by faventur          #+#    #+#             */
+/*   Updated: 2022/06/01 15:21:12 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_strdel() function takes as a parameter the address of a pointer
-** whose pointed zone must be freed avec free(3), then the pointer is
-** set to NULL.
-*/
-
 #include "libft.h"
 
-void	ft_strdel(char **as)
+void	ft_sort_chartab(char **tab)
 {
-	if (as != NULL)
+	char	*temp;
+	size_t	i;
+	size_t	size;
+
+	i = 0;
+	size = ft_chartab_len(tab);
+	while (i < size - 1)
 	{
-		free(*as);
-		*as = NULL;
+		if (ft_strcmp(tab[i], tab[i + 1]) > 0)
+		{
+			temp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = temp;
+			i = 0;
+		}
+		else
+			i++;
 	}
 }

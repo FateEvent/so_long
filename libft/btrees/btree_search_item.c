@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   btree_search_item.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 14:24:18 by faventur          #+#    #+#             */
-/*   Updated: 2022/06/01 17:42:15 by faventur         ###   ########.fr       */
+/*   Created: 2022/05/04 11:52:00 by faventur          #+#    #+#             */
+/*   Updated: 2022/05/04 14:13:58 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_strdel() function takes as a parameter the address of a pointer
-** whose pointed zone must be freed avec free(3), then the pointer is
-** set to NULL.
-*/
+#include "ft_btree.h"
 
-#include "libft.h"
-
-void	ft_strdel(char **as)
+void	*btree_search_item(t_btree *root, void *data_ref, int (*cmpf)
+			(void *, void *))
 {
-	if (as != NULL)
+	void	*ptr;
+
+	if (root)
 	{
-		free(*as);
-		*as = NULL;
+		if (root->left)
+			ptr = btree_search_item(root->left, data_ref, cmpf);
+		if (cmpf(data_ref, root->item) == 0)
+		{
+			ptr = root->item;
+			return (ptr);
+		}
+		if (root->right)
+			ptr = btree_search_item(root->right, data_ref, cmpf);
+		return (ptr);
 	}
+	return (NULL);
 }

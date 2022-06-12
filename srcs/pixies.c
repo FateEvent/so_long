@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:19:27 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/09 18:19:46 by faventur         ###   ########.fr       */
+/*   Updated: 2022/06/12 17:32:27 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ void	ft_invoke_char(t_program *data, t_image *pixie, t_vector pos, int var)
 			pos.y * (pixie[7].size.y - var));
 }
 
+static void	ft_invoke_pixie_pt2(int *i, t_program *data, t_image *pixie)
+{
+	mlx_put_image_to_window(data->mlx, data->window.reference,
+		pixie[3].reference, i[1] * (pixie[3].size.x - 1),
+		i[0] * (pixie[3].size.y - 1));
+}
+
+/*
 static void	ft_invoke_pixie_pt2(char c, int *i, t_program *data, t_image *pixie)
 {
 	if (c == 'K')
@@ -54,7 +62,7 @@ static void	ft_invoke_pixie_pt2(char c, int *i, t_program *data, t_image *pixie)
 			pixie[3].reference, i[1] * (pixie[3].size.x - 1),
 			i[0] * (pixie[3].size.y - 1));
 }
-
+*/
 void	ft_invoke_pixie(char c, int *i, t_program *data, t_image *pixie)
 {
 	if (c == '1')
@@ -80,7 +88,7 @@ void	ft_invoke_pixie(char c, int *i, t_program *data, t_image *pixie)
 			i[0] * (pixie[2].size.y - 1));
 	}
 	else
-		ft_invoke_pixie_pt2(c, i, data, pixie);
+		ft_invoke_pixie_pt2(i, data, pixie);
 }
 
 t_image	*ft_put_sprite(t_program *data)

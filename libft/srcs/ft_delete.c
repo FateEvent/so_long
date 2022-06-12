@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_delete.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 14:24:18 by faventur          #+#    #+#             */
-/*   Updated: 2022/06/01 17:42:15 by faventur         ###   ########.fr       */
+/*   Created: 2022/06/01 17:44:51 by faventur          #+#    #+#             */
+/*   Updated: 2022/06/01 17:44:56 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_strdel() function takes as a parameter the address of a pointer
-** whose pointed zone must be freed avec free(3), then the pointer is
-** set to NULL.
-*/
-
 #include "libft.h"
 
-void	ft_strdel(char **as)
+void	ft_delete(void *as)
 {
 	if (as != NULL)
 	{
-		free(*as);
-		*as = NULL;
+		free(as);
+		as = NULL;
 	}
 }

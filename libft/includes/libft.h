@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 22:19:34 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/29 14:21:13 by faventur         ###   ########.fr       */
+/*   Updated: 2022/06/12 17:31:05 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_list
 {
@@ -84,7 +86,7 @@ void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_putnbr_base(int nbr, char *base);
 
-// Linked list functions
+// Bonus functions
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -93,13 +95,19 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstsort(t_list **begin_list, int (*cmp)());
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // Addenda
 void	ft_sort_int_tab(int	*tab, int size);
+void	ft_sort_chartab(char **tab);
+size_t	ft_chartab_len(char **arr);
 int		ft_power(int n, int power);
 char	ft_binary2char(char *binary);
 int		ft_strtolol(const char *str);
+int		ft_strstrbool(const char *haystack, const char *needle);
+void	ft_delete(void *as);
+void	ft_arr_freer(char **arr);
 void	ft_puterror(const char *str);
 
 #endif

@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackclear.c                                    :+:      :+:    :+:   */
+/*   ft_btree_clear.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 09:53:37 by faventur          #+#    #+#             */
-/*   Updated: 2022/06/11 15:40:59 by faventur         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:44:37 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** The ft_stackclear() function suppresses and frees the memory of the
-** element passed as a parameter and of all the following elements by
-** using the del function and free(3). Finally, the initial pointer is
-** to be set to NULL.
+** The ft_btree_clear() function suppresses and frees the memory of the
+** the element passed as a parameter and of all the following elements
+** by using the del function and free(3). Finally, the initial pointer
+** is to be set to NULL.
 */
 
-#include "stacks.h"
+#include "ft_btree.h"
 
-void	ft_stackclear(t_stack *stack, void (*del)(void *))
+void	ft_btree_clear(t_btree *root, void (*del)(void *))
 {
-	t_node	*temp;
-	t_node	*delenda;
-
-	if (!stack || !del)
+	if (!root || !del)
 		return ;
-	delenda = stack->top;
-	while (delenda != NULL)
-	{
-		temp = delenda->next;
-		ft_stackdelone(delenda, del);
-		delenda = temp;
-	}
+	if (root->left)
+		ft_btree_clear(root->left, del);
+	if (root->right)
+		ft_btree_clear(root->right, del);
+	del(root->item);
+	free(root);
 }

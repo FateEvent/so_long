@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 14:24:18 by faventur          #+#    #+#             */
-/*   Updated: 2022/06/01 17:42:15 by faventur         ###   ########.fr       */
+/*   Created: 2022/05/01 15:15:43 by faventur          #+#    #+#             */
+/*   Updated: 2022/05/02 22:04:02 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_strdel() function takes as a parameter the address of a pointer
-** whose pointed zone must be freed avec free(3), then the pointer is
-** set to NULL.
-*/
+#include "ft_btree.h"
 
-#include "libft.h"
-
-void	ft_strdel(char **as)
+t_btree	*btree_create_node(void *item)
 {
-	if (as != NULL)
+	t_btree	*new;
+
+	new = (t_btree *)malloc(sizeof(*new));
+	if (new)
 	{
-		free(*as);
-		*as = NULL;
+		new->item = item;
+		new->left = NULL;
+		new->right = NULL;
 	}
+	return (new);
 }

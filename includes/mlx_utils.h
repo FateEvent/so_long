@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:06:01 by faventur          #+#    #+#             */
-/*   Updated: 2022/05/15 20:16:50 by faventur         ###   ########.fr       */
+/*   Updated: 2022/06/12 18:07:39 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,14 @@ typedef struct s_nme
 	t_vector	pos;
 	t_vector	prev;
 }				t_nme;
+
+typedef struct s_update
+{
+	t_vector	basic_pos;
+	t_vector	villain_pos;
+	int			b_var;
+	int			v_var;
+}				t_update;
 
 // ---------------------------------
 // FUNCTIONS

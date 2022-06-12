@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   btree_level_count.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 14:24:18 by faventur          #+#    #+#             */
-/*   Updated: 2022/06/01 17:42:15 by faventur         ###   ########.fr       */
+/*   Created: 2022/05/04 11:23:18 by faventur          #+#    #+#             */
+/*   Updated: 2022/05/04 11:23:40 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** The ft_strdel() function takes as a parameter the address of a pointer
-** whose pointed zone must be freed avec free(3), then the pointer is
-** set to NULL.
-*/
+#include "ft_btree.h"
 
-#include "libft.h"
-
-void	ft_strdel(char **as)
+int	btree_level_count(t_btree *root)
 {
-	if (as != NULL)
+	int	lheight;
+	int	rheight;
+
+	if (root)
 	{
-		free(*as);
-		*as = NULL;
+		lheight = btree_level_count(root->left);
+		rheight = btree_level_count(root->right);
+		if (lheight > rheight)
+			return (lheight + 1);
+		else
+			return (rheight + 1);
 	}
+	return (0);
 }
