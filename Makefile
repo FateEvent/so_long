@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 11:47:12 by faventur          #+#    #+#              #
-#    Updated: 2022/09/15 18:09:34 by faventur         ###   ########.fr        #
+#    Updated: 2022/09/27 12:02:33 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -sC ./libft
 	@mv ./libft/libft.a .
+	@$(MAKE) -sC ./MLX
+#	@mv ./libft/libft.a .
 	@gcc $(FLAGS) $(OBJS) $(LINKS) libft.a -o $(NAME)
 	@echo "$(CURSIVE)$(HIBLUE)Parce qu'ouvrir une fenêtre,$(NONE)"
 	@echo "$(CURSIVE)$(HIGREEN)c'est surfait.$(NONE)"
@@ -47,6 +49,8 @@ exe: all
 clean:
 	@$(RM) libft.a $(OBJS)
 	@$(MAKE) clean -C ./libft
+#	@$(RM) libft.a $(OBJS)
+#	@$(MAKE) clean -C ./libft
 
 fclean: clean
 	@$(RM) $(NAME)
