@@ -6,7 +6,7 @@
 #    By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/16 11:47:12 by faventur          #+#    #+#              #
-#    Updated: 2022/09/27 12:02:33 by faventur         ###   ########.fr        #
+#    Updated: 2022/09/27 14:14:03 by faventur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJS	= $(addprefix srcs/, ${SRCS:.c=.o})
 
 FLAGS = -Wall -Wextra -Werror
 
-LINKS = -lmlx -framework OpenGL -framework AppKit
+LINKS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 RM =	rm -f
 
@@ -35,13 +35,12 @@ $(NAME): $(OBJS)
 	@$(MAKE) -sC ./libft
 	@mv ./libft/libft.a .
 	@$(MAKE) -sC ./MLX
-#	@mv ./libft/libft.a .
 	@gcc $(FLAGS) $(OBJS) $(LINKS) libft.a -o $(NAME)
 	@echo "$(CURSIVE)$(HIBLUE)Parce qu'ouvrir une fenêtre,$(NONE)"
 	@echo "$(CURSIVE)$(HIGREEN)c'est surfait.$(NONE)"
 
 .c.o:
-	gcc -Wall -Wextra -Werror -c -I./includes -I./libft/includes $< -o ${<:.c=.o}
+	gcc -Wall -Wextra -Werror -c -I./includes -I./libft/includes -I./mlx $< -o ${<:.c=.o}
 
 exe: all
 	@./$(NAME)
@@ -49,11 +48,11 @@ exe: all
 clean:
 	@$(RM) libft.a $(OBJS)
 	@$(MAKE) clean -C ./libft
-#	@$(RM) libft.a $(OBJS)
-#	@$(MAKE) clean -C ./libft
 
 fclean: clean
 	@$(RM) $(NAME)
 	@$(MAKE) fclean -C ./libft
+	@$(MAKE) clean -C ./mlx
+	@$(RM) libmlx.a $(OBJS)
 
 re: fclean all
