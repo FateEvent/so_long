@@ -6,7 +6,7 @@
 /*   By: faventur <faventur@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 12:07:41 by faventur          #+#    #+#             */
-/*   Updated: 2022/04/28 16:48:26 by faventur         ###   ########.fr       */
+/*   Updated: 2022/10/16 11:25:45 by faventur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_image	ft_new_image(void *mlx, int width, int height)
 
 	img.reference = mlx_new_image(mlx, width, height);
 	img.size.x = width;
-	img.size.x = height;
+	img.size.y = height;
 	img.pixels = mlx_get_data_addr(img.reference, &img.bits_per_pixel,
 			&img.line_size, &img.endian);
 	return (img);
